@@ -41,5 +41,6 @@
 
 ---
 
-> 💡 **“Always learning, always building.”**  
-> <sub>– Jovan Dhillon</sub>
+<p align="center">
+  <i>“Always learning, always building.”</i>
+</p>
