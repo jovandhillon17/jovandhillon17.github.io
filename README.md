@@ -1,18 +1,18 @@
 # 👋 Hi, I'm Jovan  
 
-> 💻 **IT Apprentice · 🍎 Apple Enthusiast · Passionate about all things Digital! 🚀
+> 💻 IT Apprentice · 👨🏽‍💻 Apple Enthusiast · Passionate about all things Digital! 🚀
 
 ---
 
 ## 🚀 About Me  
 > 🎓 Building real-world experience in IT support & infrastructure  
-> 🍎 Passionate about the Apple ecosystem (macOS, iOS, MDM)  
-> 📡 Exploring Microsoft 365 · Entra ID · UniFi · Cybersecurity  
+> ❤️ Passionate about the Apple ecosystem (macOS, iOS, MDM)  
+> 📖 Exploring Microsoft 365 · Entra ID · UniFi · Cybersecurity  
 > 💡 *Always learning, always building*  
 
 ---
 
-## 🛠️ Tech & Tools  
+## 🛠️ Currently Exploring  
 > ![M365](https://img.shields.io/badge/Microsoft%20365-0078D4?style=flat-square&logo=microsoft&logoColor=white)  
 > ![Azure](https://img.shields.io/badge/Entra%20ID-0089D6?style=flat-square&logo=microsoftazure&logoColor=white)  
 > ![Intune](https://img.shields.io/badge/Intune-0078D4?style=flat-square&logo=microsoft&logoColor=white)  
