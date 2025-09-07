@@ -25,12 +25,33 @@
 
 ---
 
-## 📌 Featured Projects  
-| Project | Description | Tech |
-|---------|-------------|------|
-| **Personal Domain + GitHub Pages** | Built and configured `jovandhillon.com` with GitHub Pages, custom subdomains, and HTTPS | GitHub Pages · DNS · SSL |
-| **Custom iCloud Mail Domain** | Configured iCloud Mail with full SPF, DKIM & DMARC for `@jovandhillon.com` | DNS · Email Security · iCloud |
-| **LinkedIn Vanity Subdomain** | Created `linkedin.jovandhillon.com` redirect for professional branding | DNS · GitHub Pages |
+## 📌 Featured Projects
+
+<div align="center">
+
+💻 **[Personal Domain + GitHub Pages](https://jovandhillon.com)**  
+Built and configured `jovandhillon.com` with GitHub Pages, custom subdomains, and HTTPS  
+**Tech:** GitHub Pages · DNS · SSL  
+
+---
+
+📧 **Custom iCloud Mail Domain**  
+Configured iCloud Mail with full SPF, DKIM & DMARC for `@jovandhillon.com`  
+**Tech:** DNS · Email Security · iCloud  
+
+---
+
+🔗 **[LinkedIn Vanity Subdomain](https://linkedin.jovandhillon.com)**  
+Created `linkedin.jovandhillon.com` redirect for professional branding  
+**Tech:** DNS · GitHub Pages  
+
+---
+
+📰 **[What Starting My IT Apprenticeship Taught Me — ApprenticeWatch](https://apprenticewatch.com/resources/what-starting-my-it-apprenticeship-taught-me)**  
+Featured article where I share real-world apprenticeship lessons and insights  
+**Tech:** Career Development · Professional Growth  
+
+</div>
 
 ---
 
