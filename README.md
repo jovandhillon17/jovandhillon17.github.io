@@ -1,15 +1,14 @@
 # 👋 Hi, I'm Jovan  
 
-### IT Apprentice | Apple Enthusiast | Aspiring Cloud & Infrastructure Engineer  
+### IT Apprentice | Apple Enthusiast | Passionate about all things digital!
 
 ---
 
 ## 🚀 About Me  
 - 🎓 **IT Apprentice** currently building real-world experience in IT support, infrastructure, and modern workplace technologies  
-- 🍎 **Apple Expert** with a passion for the Apple ecosystem (macOS, iOS, MDM, and integration in enterprise)  
+- 👨🏽‍💻 **Apple Expert** with a passion for the Apple ecosystem (macOS, iOS, MDM, and integration in enterprise)  
 - 🛠 **Apprenticeship Student** learning by doing — from end-user support to cloud systems and networking  
-- 📡 Interests include **Networking (Ubiquiti/UniFi)**, **Microsoft 365**, **Cloud Identity**, and **Cybersecurity**  
-- 💡 Always learning, always building  
+- 📡 Interests include **Networking (Ubiquiti/UniFi)**, **Microsoft 365**, **Cloud Identity**, and **Cybersecurity**    
 
 ---
 
