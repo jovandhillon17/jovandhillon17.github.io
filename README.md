@@ -1,5 +1,5 @@
 # 👋 Hi, I'm Jovan  
-<img align="right" src="https://github.com/jovandhillon17.png" width="120" style="border-radius:50%;" />
+<img align="right" src="https://github.com/jovandhillon17.png" width="100" style="border-radius:50%;" />
 
 > 💻 IT Apprentice · 👨🏽‍💻 Apple Enthusiast · Passionate about all things Digital! 🚀
 
