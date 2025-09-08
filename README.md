@@ -31,7 +31,7 @@
 
 ---
 
-## 🌐 Connect  
+## 🌐 Connect With Me :)  
 [Website](https://jovandhillon.com) · [LinkedIn](https://linkedin.jovandhillon.com) · [GitHub](https://github.com/jovandhillon17)
 
 ---
