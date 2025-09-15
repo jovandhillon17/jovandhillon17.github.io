@@ -1,0 +1,53 @@
+name: Update Birthday Countdown
+
+on:
+  schedule:
+    - cron: "0 0 * * *"   # Runs every day at midnight UTC
+  workflow_dispatch:      # Lets you trigger it manually
+
+jobs:
+  update-countdown:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Calculate days to birthday
+        run: |
+          import datetime
+          today = datetime.date.today()
+          birthday = datetime.date(today.year, 9, 17)  # <-- your birthday
+          if today > birthday:
+              birthday = datetime.date(today.year + 1, 9, 17)
+
+          days_left = (birthday - today).days
+
+          if days_left == 0:
+              text = "## 🎂 Birthday Countdown\n🎉 It's my birthday today!"
+          else:
+              text = f"## 🎂 Birthday Countdown\n⏳ {days_left} days until my birthday!"
+
+          # Read README
+          with open("README.md", "r") as f:
+              lines = f.readlines()
+
+          # Rewrite README
+          with open("README.md", "w") as f:
+              for line in lines:
+                  if line.strip().startswith("## 🎂 Birthday Countdown"):
+                      f.write(text + "\n")
+                      break
+                  f.write(line)
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add README.md
+          git commit -m "Update birthday countdown" || echo "No changes"
+          git push
