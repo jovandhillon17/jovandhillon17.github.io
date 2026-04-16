@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jovan Dhillon</title>
-    <meta name="description" content="Jovan Dhillon — Technical Services Engineer, Apple enthusiast, and builder of modern digital experiences.">
+    <meta name="description" content="Jovan Dhillon — Technical Services Engineer with hands-on experience across IT support, Microsoft 365, networking, Apple tech, and digital projects.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -129,6 +129,8 @@
         .nav-links {
             display: flex;
             gap: 24px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
         .nav-links a {
@@ -244,7 +246,7 @@
             font-size: clamp(17px, 2.2vw, 22px);
             font-weight: 400;
             color: var(--text-secondary);
-            max-width: 720px;
+            max-width: 760px;
             margin: 0 auto 36px;
             line-height: 1.55;
             opacity: 0;
@@ -332,6 +334,13 @@
             margin-bottom: 32px;
         }
 
+        .journey-text {
+            max-width: 760px;
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
         .divider {
             height: 1px;
             background: linear-gradient(
@@ -352,7 +361,8 @@
 
         .about-card,
         .tech-item,
-        .project-card {
+        .project-card,
+        .stat-card {
             background: var(--bg-card);
             backdrop-filter: blur(22px);
             -webkit-backdrop-filter: blur(22px);
@@ -366,7 +376,8 @@
             transition: all 0.3s ease;
         }
 
-        .about-card:hover {
+        .about-card:hover,
+        .stat-card:hover {
             border-color: var(--border-hover);
             transform: translateY(-4px);
             box-shadow: var(--shadow-hover);
@@ -390,9 +401,35 @@
             line-height: 1.6;
         }
 
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .stat-card {
+            border-radius: var(--radius-sm);
+            padding: 22px 18px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
         .tech-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 12px;
         }
 
@@ -429,6 +466,7 @@
         .tech-item[data-color="dark"]::before { background: rgba(255,255,255,0.035); }
         .tech-item[data-color="teal"]::before { background: rgba(100,210,255,0.07); }
         .tech-item[data-color="orange"]::before { background: rgba(255,159,10,0.07); }
+        .tech-item[data-color="pink"]::before { background: rgba(255,55,95,0.07); }
 
         .tech-icon {
             width: 40px;
@@ -448,6 +486,7 @@
         .tech-item[data-color="dark"] .tech-icon { background: rgba(255,255,255,0.08); color: var(--text-primary); }
         .tech-item[data-color="teal"] .tech-icon { background: rgba(100,210,255,0.12); color: var(--teal); }
         .tech-item[data-color="orange"] .tech-icon { background: rgba(255,159,10,0.12); color: var(--orange); }
+        .tech-item[data-color="pink"] .tech-icon { background: rgba(255,55,95,0.12); color: var(--pink); }
 
         .tech-name {
             font-size: 13px;
@@ -495,6 +534,8 @@
         .project-icon.pink { background: rgba(255,55,95,0.12); }
         .project-icon.green { background: rgba(48,209,88,0.12); }
         .project-icon.orange { background: rgba(255,159,10,0.12); }
+        .project-icon.purple { background: rgba(191,90,242,0.12); }
+        .project-icon.teal { background: rgba(100,210,255,0.12); }
 
         .project-info {
             flex: 1;
@@ -587,6 +628,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .tech-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -599,6 +644,13 @@
 
             nav .nav-inner {
                 padding: 0 18px;
+                height: auto;
+                min-height: 56px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                align-items: flex-start;
+                gap: 8px;
+                flex-direction: column;
             }
 
             .nav-links {
@@ -607,7 +659,7 @@
 
             .hero {
                 min-height: auto;
-                padding-top: 110px;
+                padding-top: 140px;
                 padding-bottom: 60px;
             }
 
@@ -632,7 +684,8 @@
                 justify-content: center;
             }
 
-            .tech-grid {
+            .tech-grid,
+            .stats-grid {
                 grid-template-columns: 1fr 1fr;
             }
 
@@ -652,6 +705,7 @@
             <a href="#" class="nav-logo">jovan.</a>
             <div class="nav-links">
                 <a href="#about">About</a>
+                <a href="#experience">Experience</a>
                 <a href="#stack">Stack</a>
                 <a href="#projects">Projects</a>
             </div>
@@ -673,7 +727,7 @@
             <h1><span class="gradient-text">Hi, I’m Jovan.</span></h1>
 
             <p class="tagline">
-                Building modern IT experiences through <strong>support, infrastructure, Apple tech, networking, and clean digital projects</strong> — with a love for design that feels simple, sharp, and intentional.
+                Technical Services Engineer with hands-on experience across <strong>IT support, Microsoft 365, networking, Apple tech, infrastructure, and digital projects</strong> — passionate about building reliable systems and clean modern experiences.
             </p>
 
             <div class="hero-cta">
@@ -713,25 +767,141 @@
                 <div class="about-card">
                     <span class="icon">💼</span>
                     <h3>Technical Services Engineer</h3>
-                    <p>Developing real-world experience across support, systems, infrastructure, and day-to-day IT operations.</p>
+                    <p>Developing real-world experience across support, systems, infrastructure, troubleshooting, and day-to-day IT operations.</p>
                 </div>
 
                 <div class="about-card">
                     <span class="icon">🍎</span>
                     <h3>Apple Ecosystem</h3>
-                    <p>Interested in macOS, iOS, device management, and making Apple technology work beautifully in real environments.</p>
+                    <p>Interested in macOS, iOS, Apple workflows, device management, and making technology feel smooth and intuitive.</p>
                 </div>
 
                 <div class="about-card">
                     <span class="icon">🌐</span>
                     <h3>Networking</h3>
-                    <p>Exploring reliable, secure network setups with a growing focus on UniFi, VLANs, and clean infrastructure design.</p>
+                    <p>Exploring reliable and secure network setups with growing experience in connectivity, VLANs, internet services, and infrastructure design.</p>
                 </div>
 
                 <div class="about-card">
                     <span class="icon">✨</span>
                     <h3>Digital Projects</h3>
-                    <p>I enjoy turning simple ideas into sleek, useful projects with good branding, clean UI, and a premium feel.</p>
+                    <p>I enjoy turning simple ideas into sleek, useful projects with strong branding, clean UI, and a premium feel.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section id="journey" class="fade-in">
+            <div class="section-label">// journey</div>
+            <h2 class="section-title">My journey so far</h2>
+            <p class="journey-text">
+                I started my career through an IT apprenticeship, where I’ve been able to build hands-on experience in real business environments. From support tickets and Microsoft 365 to networking, devices, Apple tech, and infrastructure projects, I’ve enjoyed learning by doing. I recently completed my Level 3 IT apprenticeship with a Distinction, which reflects both the technical skills and confidence I’ve built along the way.
+            </p>
+        </section>
+
+        <div class="divider"></div>
+
+        <section id="stats" class="fade-in">
+            <div class="section-label">// snapshot</div>
+            <h2 class="section-title">A quick snapshot</h2>
+            <p class="section-desc">A few things that sum up what I’m focused on right now.</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">L3</div>
+                    <div class="stat-label">IT apprenticeship completed</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">D</div>
+                    <div class="stat-label">Distinction achieved</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">MSP</div>
+                    <div class="stat-label">Managed services experience</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Always learning mindset</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section id="experience" class="fade-in">
+            <div class="section-label">// experience</div>
+            <h2 class="section-title">What I do</h2>
+            <p class="section-desc">A snapshot of the kind of work I’ve been involved in so far.</p>
+
+            <div class="about-content">
+                <div class="about-card">
+                    <span class="icon">🛠️</span>
+                    <h3>IT Support</h3>
+                    <p>Supporting users with day-to-day technical issues across devices, Microsoft 365, connectivity, email, and general troubleshooting.</p>
+                </div>
+
+                <div class="about-card">
+                    <span class="icon">🏢</span>
+                    <h3>Managed Services</h3>
+                    <p>Working in an MSP environment and gaining experience across multiple clients, systems, tickets, support scenarios, and business priorities.</p>
+                </div>
+
+                <div class="about-card">
+                    <span class="icon">☁️</span>
+                    <h3>Cloud &amp; Identity</h3>
+                    <p>Working with Microsoft 365, Entra ID, Intune, accounts, permissions, user management, and device administration in business environments.</p>
+                </div>
+
+                <div class="about-card">
+                    <span class="icon">📡</span>
+                    <h3>Infrastructure</h3>
+                    <p>Helping with networking, setup work, hardware installs, internet connectivity, system changes, and keeping technology running smoothly.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section id="highlights" class="fade-in">
+            <div class="section-label">// highlights</div>
+            <h2 class="section-title">A few highlights</h2>
+            <p class="section-desc">Some of the areas I’ve worked in and experiences I’m proud of.</p>
+
+            <div class="projects-list">
+                <div class="project-card">
+                    <div class="project-icon blue">🎓</div>
+                    <div class="project-info">
+                        <h3>Level 3 IT Apprenticeship — Distinction</h3>
+                        <p>Completed my Level 3 IT apprenticeship and achieved a Distinction in my End-Point Assessment.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon green">🌐</div>
+                    <div class="project-info">
+                        <h3>Networking &amp; Infrastructure Projects</h3>
+                        <p>Gained hands-on experience with connectivity, hardware installs, internet services, VLAN-related work, and infrastructure setups.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon orange">🍎</div>
+                    <div class="project-info">
+                        <h3>Apple &amp; MDM Interest</h3>
+                        <p>Strong interest in Apple technology, device management, and creating simple, polished, user-friendly experiences.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon pink">📝</div>
+                    <div class="project-info">
+                        <h3>Apprentice Advocacy</h3>
+                        <p>Ambassador at ApprenticeWatch.com and passionate about helping others see the value of apprenticeships and career growth.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -745,57 +915,63 @@
 
             <div class="tech-grid">
                 <div class="tech-item" data-color="blue">
-                    <div class="tech-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M0 0h11.377v11.372H0V0zm12.623 0H24v11.372H12.623V0zM0 12.623h11.377V24H0V12.623zm12.623 0H24V24H12.623V12.623z"/>
-                        </svg>
-                    </div>
+                    <div class="tech-icon">🪟</div>
                     <div class="tech-name">Microsoft 365</div>
                 </div>
 
                 <div class="tech-item" data-color="blue">
-                    <div class="tech-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2L2 7v10l10 5 10-5V7L12 2z"/>
-                        </svg>
-                    </div>
+                    <div class="tech-icon">🔐</div>
                     <div class="tech-name">Entra ID</div>
                 </div>
 
                 <div class="tech-item" data-color="blue">
-                    <div class="tech-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                        </svg>
-                    </div>
+                    <div class="tech-icon">💻</div>
                     <div class="tech-name">Intune</div>
                 </div>
 
                 <div class="tech-item" data-color="dark">
-                    <div class="tech-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83"/><path d="M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/>
-                        </svg>
-                    </div>
+                    <div class="tech-icon">🍎</div>
                     <div class="tech-name">Apple</div>
                 </div>
 
                 <div class="tech-item" data-color="teal">
-                    <div class="tech-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2a7.2 7.2 0 01-6-3.22c.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08a7.2 7.2 0 01-6 3.22z"/>
-                        </svg>
-                    </div>
-                    <div class="tech-name">UniFi</div>
+                    <div class="tech-icon">📶</div>
+                    <div class="tech-name">Networking</div>
                 </div>
 
                 <div class="tech-item" data-color="orange">
-                    <div class="tech-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M4 4h16v2H4V4zm0 4h10v2H4V8zm0 4h16v2H4v-2zm0 4h10v2H4v-2zm0 4h16v2H4v-2z"/>
-                        </svg>
-                    </div>
+                    <div class="tech-icon">⚡</div>
                     <div class="tech-name">PowerShell</div>
+                </div>
+
+                <div class="tech-item" data-color="purple">
+                    <div class="tech-icon">📩</div>
+                    <div class="tech-name">Exchange Online</div>
+                </div>
+
+                <div class="tech-item" data-color="pink">
+                    <div class="tech-icon">🧩</div>
+                    <div class="tech-name">Troubleshooting</div>
+                </div>
+
+                <div class="tech-item" data-color="teal">
+                    <div class="tech-icon">🌍</div>
+                    <div class="tech-name">UniFi</div>
+                </div>
+
+                <div class="tech-item" data-color="dark">
+                    <div class="tech-icon">🖥️</div>
+                    <div class="tech-name">Device Setup</div>
+                </div>
+
+                <div class="tech-item" data-color="orange">
+                    <div class="tech-icon">☁️</div>
+                    <div class="tech-name">Cloud Admin</div>
+                </div>
+
+                <div class="tech-item" data-color="blue">
+                    <div class="tech-icon">🛠️</div>
+                    <div class="tech-name">IT Support</div>
                 </div>
             </div>
         </section>
@@ -811,8 +987,8 @@
                 <a href="https://jovandhillon.com" class="project-card" target="_blank" rel="noopener">
                     <div class="project-icon blue">💻</div>
                     <div class="project-info">
-                        <h3>Personal Domain + GitHub Pages</h3>
-                        <p>Custom domain setup, DNS configuration, and a clean static hosting workflow.</p>
+                        <h3>Personal Domain + Website</h3>
+                        <p>Custom domain setup, redirects, branding, and a clean static website experience.</p>
                     </div>
                     <span class="project-arrow">→</span>
                 </a>
@@ -829,7 +1005,7 @@
                     <div class="project-icon green">🔗</div>
                     <div class="project-info">
                         <h3>LinkedIn Vanity Subdomain</h3>
-                        <p>A cleaner, easier-to-share LinkedIn link using a custom branded redirect.</p>
+                        <p>A cleaner and easier-to-share LinkedIn link using a custom branded redirect.</p>
                     </div>
                     <span class="project-arrow">→</span>
                 </a>
@@ -842,6 +1018,22 @@
                     </div>
                     <span class="project-arrow">→</span>
                 </a>
+
+                <div class="project-card">
+                    <div class="project-icon purple">🎨</div>
+                    <div class="project-info">
+                        <h3>Branding &amp; Digital Design</h3>
+                        <p>Working on personal branding, clean UI ideas, domain setups, shareable links, and polished digital presentation.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon teal">📡</div>
+                    <div class="project-info">
+                        <h3>Real-World IT Projects</h3>
+                        <p>Hands-on involvement in technical support, connectivity changes, setup work, and infrastructure-related tasks in live environments.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -851,7 +1043,7 @@
                 <a href="https://linkedin.jovandhillon.com" target="_blank" rel="noopener">LinkedIn</a>
                 <a href="https://github.com/jovandhillon17" target="_blank" rel="noopener">GitHub</a>
             </div>
-            <p class="footer-quote">“Always learning. Always building.”</p>
+            <p class="footer-quote">Built with curiosity, consistency, and a love for good tech.</p>
         </footer>
 
     </div>
