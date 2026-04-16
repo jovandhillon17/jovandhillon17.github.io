@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jovan Dhillon</title>
+    <meta name="description" content="Jovan Dhillon — IT Apprentice, Apple Enthusiast, and Digital Builder.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --bg-elevated: #141414;
+            --bg-card: #1a1a1a;
+            --border: #2a2a2a;
+            --border-hover: #3a3a3a;
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --text-tertiary: #6e6e73;
+            --accent: #2997ff;
+            --accent-glow: rgba(41, 151, 255, 0.15);
+            --green: #30d158;
+            --purple: #bf5af2;
+            --orange: #ff9f0a;
+            --pink: #ff375f;
+            --teal: #64d2ff;
+            --radius: 16px;
+            --radius-sm: 10px;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ── Noise overlay ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ── Ambient glow ── */
+        .ambient-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.07;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .glow-1 { top: -200px; left: -100px; background: var(--accent); }
+        .glow-2 { bottom: -200px; right: -100px; background: var(--purple); }
+
+        /* ── Container ── */
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Nav ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.72);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        nav .nav-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: -0.01em;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+
+        /* ── Hero ── */
+        .hero {
+            padding-top: 140px;
+            padding-bottom: 80px;
+            text-align: center;
+        }
+        .hero-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--border);
+            margin-bottom: 28px;
+            opacity: 0;
+            animation: fadeUp 0.7s ease forwards;
+        }
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 52px);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            opacity: 0;
+            animation: fadeUp 0.7s ease 0.1s forwards;
+        }
+        .hero h1 .wave {
+            display: inline-block;
+            animation: wave 2.5s ease-in-out infinite;
+            transform-origin: 70% 70%;
+        }
+        .hero .tagline {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            max-width: 440px;
+            margin: 0 auto 32px;
+            opacity: 0;
+            animation: fadeUp 0.7s ease 0.2s forwards;
+        }
+        .hero .tagline strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        .hero-cta {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.7s ease 0.3s forwards;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 980px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: #1a8aef;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+        .btn-secondary:hover {
+            background: var(--bg-elevated);
+            border-color: var(--border-hover);
+            transform: translateY(-1px);
+        }
+
+        /* ── Sections ── */
+        section {
+            padding: 60px 0;
+        }
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+        }
+
+        /* ── Divider ── */
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 0;
+        }
+
+        /* ── About grid ── */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .about-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        .about-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+        .about-card .icon {
+            font-size: 24px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .about-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .about-card p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ── Tech stack ── */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .tech-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .tech-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border-radius: inherit;
+        }
+        .tech-item:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+        .tech-item:hover::before { opacity: 1; }
+
+        .tech-item[data-color="blue"]::before { background: rgba(41,151,255,0.06); }
+        .tech-item[data-color="purple"]::before { background: rgba(191,90,242,0.06); }
+        .tech-item[data-color="dark"]::before { background: rgba(255,255,255,0.03); }
+        .tech-item[data-color="teal"]::before { background: rgba(100,210,255,0.06); }
+        .tech-item[data-color="orange"]::before { background: rgba(255,159,10,0.06); }
+
+        .tech-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 18px;
+        }
+        .tech-item[data-color="blue"] .tech-icon { background: rgba(41,151,255,0.12); color: var(--accent); }
+        .tech-item[data-color="purple"] .tech-icon { background: rgba(191,90,242,0.12); color: var(--purple); }
+        .tech-item[data-color="dark"] .tech-icon { background: rgba(255,255,255,0.08); color: var(--text-primary); }
+        .tech-item[data-color="teal"] .tech-icon { background: rgba(100,210,255,0.12); color: var(--teal); }
+        .tech-item[data-color="orange"] .tech-icon { background: rgba(255,159,10,0.12); color: var(--orange); }
+
+        .tech-name {
+            font-size: 13px;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Projects ── */
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .project-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+            background: var(--bg-elevated);
+        }
+        .project-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .project-icon.blue { background: rgba(41,151,255,0.12); }
+        .project-icon.pink { background: rgba(255,55,95,0.12); }
+        .project-icon.green { background: rgba(48,209,88,0.12); }
+        .project-icon.orange { background: rgba(255,159,10,0.12); }
+        .project-info { flex: 1; }
+        .project-info h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .project-info p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .project-arrow {
+            color: var(--text-tertiary);
+            font-size: 18px;
+            transition: transform 0.2s;
+        }
+        .project-card:hover .project-arrow {
+            transform: translateX(3px);
+            color: var(--text-secondary);
+        }
+
+        /* ── Footer ── */
+        footer {
+            padding: 48px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            margin-top: 20px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--text-primary); }
+        .footer-quote {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            font-style: italic;
+        }
+
+        /* ── Animations ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            15% { transform: rotate(14deg); }
+            30% { transform: rotate(-8deg); }
+            40% { transform: rotate(14deg); }
+            50% { transform: rotate(-4deg); }
+            60% { transform: rotate(10deg); }
+            70% { transform: rotate(0deg); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Status pill ── */
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 980px;
+            padding: 6px 16px 6px 12px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: fadeUp 0.7s ease 0.05s forwards;
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .about-content { grid-template-columns: 1fr; }
+            .tech-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero { padding-top: 120px; padding-bottom: 60px; }
+            section { padding: 40px 0; }
+            .nav-links { gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">jovan.</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#stack">Stack</a>
+                <a href="#projects">Projects</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- Hero -->
+        <section class="hero">
+            <img src="https://github.com/jovandhillon17.png" alt="Jovan Dhillon" class="hero-avatar" />
+            <div class="status-pill">
+                <span class="status-dot"></span>
+                IT Apprentice · Learning &amp; Building
+            </div>
+            <h1><span class="wave">👋</span> Hi, I'm Jovan</h1>
+            <p class="tagline">
+                <strong>Apple enthusiast</strong> and aspiring IT professional — passionate about infrastructure, MDM, and all things digital.
+            </p>
+            <div class="hero-cta">
+                <a href="https://linkedin.jovandhillon.com" class="btn btn-primary" target="_blank" rel="noopener">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/jovandhillon17" class="btn btn-secondary" target="_blank" rel="noopener">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="https://jovandhillon.com" class="btn btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                    Website
+                </a>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- About -->
+        <section id="about" class="fade-in">
+            <div class="section-label">// about</div>
+            <h2 class="section-title">What I'm all about</h2>
+            <p class="section-desc">Building real-world experience in IT support &amp; infrastructure, one project at a time.</p>
+            <div class="about-content">
+                <div class="about-card">
+                    <span class="icon">🎓</span>
+                    <h3>IT Apprentice</h3>
+                    <p>Gaining hands-on experience across IT support, networking, and systems administration.</p>
+                </div>
+                <div class="about-card">
+                    <span class="icon">🍎</span>
+                    <h3>Apple Ecosystem</h3>
+                    <p>Deep interest in macOS, iOS, and Mobile Device Management (MDM) solutions.</p>
+                </div>
+                <div class="about-card">
+                    <span class="icon">🔒</span>
+                    <h3>Cybersecurity</h3>
+                    <p>Exploring identity management, security policies, and zero-trust architecture.</p>
+                </div>
+                <div class="about-card">
+                    <span class="icon">🌐</span>
+                    <h3>Networking</h3>
+                    <p>Working with UniFi equipment and building reliable network infrastructure.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Stack -->
+        <section id="stack" class="fade-in">
+            <div class="section-label">// stack</div>
+            <h2 class="section-title">Currently exploring</h2>
+            <p class="section-desc">Technologies and platforms I'm learning and working with.</p>
+            <div class="tech-grid">
+                <div class="tech-item" data-color="blue">
+                    <div class="tech-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h11.377v11.372H0V0zm12.623 0H24v11.372H12.623V0zM0 12.623h11.377V24H0V12.623zm12.623 0H24V24H12.623V12.623z"/></svg>
+                    </div>
+                    <div class="tech-name">Microsoft 365</div>
+                </div>
+                <div class="tech-item" data-color="blue">
+                    <div class="tech-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7v10l10 5 10-5V7L12 2z"/></svg>
+                    </div>
+                    <div class="tech-name">Entra ID</div>
+                </div>
+                <div class="tech-item" data-color="blue">
+                    <div class="tech-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <div class="tech-name">Intune</div>
+                </div>
+                <div class="tech-item" data-color="dark">
+                    <div class="tech-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83"/><path d="M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/></svg>
+                    </div>
+                    <div class="tech-name">Apple</div>
+                </div>
+                <div class="tech-item" data-color="teal">
+                    <div class="tech-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2a7.2 7.2 0 01-6-3.22c.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08a7.2 7.2 0 01-6 3.22z"/></svg>
+                    </div>
+                    <div class="tech-name">UniFi</div>
+                </div>
+                <div class="tech-item" data-color="orange">
+                    <div class="tech-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16v2H4V4zm0 4h10v2H4V8zm0 4h16v2H4v-2zm0 4h10v2H4v-2zm0 4h16v2H4v-2z"/></svg>
+                    </div>
+                    <div class="tech-name">PowerShell</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Projects -->
+        <section id="projects" class="fade-in">
+            <div class="section-label">// projects</div>
+            <h2 class="section-title">Featured projects</h2>
+            <p class="section-desc">Things I've built and worked on.</p>
+            <div class="projects-list">
+                <a href="https://jovandhillon.com" class="project-card" target="_blank" rel="noopener">
+                    <div class="project-icon blue">💻</div>
+                    <div class="project-info">
+                        <h3>Personal Domain + GitHub Pages</h3>
+                        <p>Custom domain setup with DNS configuration and static hosting.</p>
+                    </div>
+                    <span class="project-arrow">→</span>
+                </a>
+                <div class="project-card">
+                    <div class="project-icon pink">📧</div>
+                    <div class="project-info">
+                        <h3>Custom iCloud Mail Domain</h3>
+                        <p>Professional email powered by iCloud with a personal domain.</p>
+                    </div>
+                </div>
+                <a href="https://linkedin.jovandhillon.com" class="project-card" target="_blank" rel="noopener">
+                    <div class="project-icon green">🔗</div>
+                    <div class="project-info">
+                        <h3>LinkedIn Vanity Subdomain</h3>
+                        <p>Custom subdomain redirect for a clean, shareable LinkedIn URL.</p>
+                    </div>
+                    <span class="project-arrow">→</span>
+                </a>
+                <a href="https://apprenticewatch.com/resources/what-starting-my-it-apprenticeship-taught-me" class="project-card" target="_blank" rel="noopener">
+                    <div class="project-icon orange">📰</div>
+                    <div class="project-info">
+                        <h3>ApprenticeWatch Feature</h3>
+                        <p>Published article about lessons learned starting an IT apprenticeship.</p>
+                    </div>
+                    <span class="project-arrow">→</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-links">
+                <a href="https://jovandhillon.com">Website</a>
+                <a href="https://linkedin.jovandhillon.com" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/jovandhillon17" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            <p class="footer-quote">"Always learning, always building."</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Intersection Observer for fade-in sections
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
