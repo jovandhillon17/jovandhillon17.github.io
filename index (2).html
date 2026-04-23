@@ -1,0 +1,2031 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jovan Dhillon — Technical Services Engineer</title>
+<meta name="description" content="Technical Services Engineer. Microsoft 365, Entra ID, Intune, UniFi, and Apple fleets. Warwickshire, UK.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   jovandhillon.com — five self-contained variations.
+   No design system. Each variation is its own world.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { overflow-x: hidden; }
+body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: 0; background: transparent; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* ═══════════════════════════════════════════════════════════
+   V1 — NEO-BRUTALIST
+   Electric yellow, black borders, offset shadows.
+   ═══════════════════════════════════════════════════════════ */
+.v-brutalist {
+  --bg: #fffef4;
+  --fg: #0a0a0a;
+  --accent: #ffe500;
+  --accent-2: #ff3b30;
+  --border: #0a0a0a;
+  --shadow: 6px 6px 0 #0a0a0a;
+  --shadow-lg: 10px 10px 0 #0a0a0a;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  background: var(--bg); color: var(--fg);
+  min-height: 100vh;
+}
+.v-brutalist a { text-decoration: none; }
+
+.br-nav {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--bg);
+  border-bottom: 3px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 24px;
+}
+.br-nav__logo {
+  font-weight: 800; font-size: 1.25rem; letter-spacing: -0.03em;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.br-nav__logo::before {
+  content: ''; width: 18px; height: 18px; background: var(--accent);
+  border: 2px solid var(--border); display: inline-block;
+}
+.br-nav__links { display: flex; gap: 4px; }
+.br-nav__links a {
+  font-weight: 600; font-size: 0.875rem;
+  padding: 8px 12px; border: 2px solid transparent;
+  transition: all 120ms ease;
+}
+.br-nav__links a:hover { border-color: var(--border); background: var(--accent); }
+@media (max-width: 720px) { .br-nav__links { display: none; } }
+
+.br-hero {
+  padding: clamp(32px, 5vw, 64px) 24px;
+  max-width: 1280px; margin: 0 auto;
+}
+.br-hero__row {
+  display: grid; grid-template-columns: 1fr 320px; gap: 24px;
+}
+@media (max-width: 820px) { .br-hero__row { grid-template-columns: 1fr; } }
+.br-hero__main {
+  background: var(--bg); border: 3px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  padding: clamp(28px, 4vw, 56px);
+  position: relative;
+}
+.br-tag {
+  display: inline-block; background: var(--accent); color: var(--fg);
+  border: 2px solid var(--border); padding: 4px 10px;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  margin-bottom: 20px;
+  box-shadow: 3px 3px 0 var(--border);
+}
+.br-hero__title {
+  font-size: clamp(2.5rem, 7vw, 5.5rem); font-weight: 800;
+  letter-spacing: -0.04em; line-height: 0.94;
+  margin-bottom: 20px;
+}
+.br-hero__title .hl {
+  background: var(--accent); padding: 0 6px; display: inline-block;
+  transform: rotate(-1.5deg);
+  border: 2px solid var(--border);
+}
+.br-hero__title .red { color: var(--accent-2); }
+.br-hero__lead {
+  font-size: 1.125rem; line-height: 1.55; max-width: 52ch;
+  margin-bottom: 24px; font-weight: 500;
+}
+.br-hero__cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.br-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 22px; font-weight: 700; font-size: 0.9375rem;
+  border: 3px solid var(--border);
+  background: var(--bg); color: var(--fg);
+  box-shadow: 4px 4px 0 var(--border);
+  transition: all 120ms ease;
+}
+.br-btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--border); }
+.br-btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--border); }
+.br-btn--primary { background: var(--accent); }
+.br-btn--dark { background: var(--border); color: #fff; }
+
+.br-card-stack { display: flex; flex-direction: column; gap: 20px; }
+.br-info-card {
+  background: var(--bg); border: 3px solid var(--border);
+  box-shadow: var(--shadow);
+  padding: 18px; font-size: 0.8125rem; font-weight: 600;
+}
+.br-info-card--accent { background: var(--accent); }
+.br-info-card--dark { background: var(--border); color: #fff; }
+.br-info-card .k {
+  font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase;
+  opacity: 0.7; margin-bottom: 6px;
+}
+.br-info-card .v { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; }
+
+.br-marquee {
+  border-top: 3px solid var(--border); border-bottom: 3px solid var(--border);
+  background: var(--border); color: var(--bg);
+  padding: 18px 0; overflow: hidden; white-space: nowrap;
+  font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em;
+  margin: 40px 0;
+}
+.br-marquee__track { display: inline-block; animation: br-marquee 26s linear infinite; }
+.br-marquee__track span { margin: 0 24px; display: inline-block; }
+.br-marquee__track .star { color: var(--accent); }
+@keyframes br-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.br-section { padding: 48px 24px; max-width: 1280px; margin: 0 auto; }
+.br-section__head {
+  display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: end;
+  margin-bottom: 32px;
+  padding-bottom: 18px; border-bottom: 3px solid var(--border);
+}
+.br-section__num {
+  font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800;
+  letter-spacing: -0.04em; line-height: 1;
+  background: var(--accent); padding: 0 14px; border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--border);
+}
+.br-section__title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 800; letter-spacing: -0.03em;
+}
+.br-section__tag {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+}
+
+.br-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+@media (max-width: 900px) { .br-grid { grid-template-columns: 1fr; } }
+.br-tile {
+  border: 3px solid var(--border);
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  padding: 24px; display: flex; flex-direction: column; gap: 12px;
+  transition: all 120ms ease;
+  min-height: 220px;
+}
+.br-tile:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--border); }
+.br-tile:nth-child(3n+1) { background: var(--bg); }
+.br-tile:nth-child(3n+2) { background: var(--accent); }
+.br-tile:nth-child(3n+3) { background: var(--bg); }
+.br-tile__num {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.br-tile__name { font-size: 1.375rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+.br-tile__desc { font-size: 0.9375rem; line-height: 1.5; font-weight: 500; }
+.br-tile__tag { margin-top: auto; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.8; }
+
+/* brutalist stack – colorful chips */
+.br-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.br-chip {
+  padding: 10px 16px; border: 3px solid var(--border);
+  background: var(--bg); box-shadow: 3px 3px 0 var(--border);
+  font-weight: 700; font-size: 0.875rem;
+  transition: all 120ms ease; cursor: default;
+}
+.br-chip:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--border); }
+.br-chip--daily { background: var(--accent); }
+.br-chip--learning { background: var(--bg); }
+
+.br-projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+@media (max-width: 820px) { .br-projects { grid-template-columns: 1fr; } }
+.br-project {
+  border: 3px solid var(--border);
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  padding: 28px;
+  display: flex; flex-direction: column; gap: 12px;
+  transition: all 120ms ease;
+  min-height: 240px;
+}
+.br-project:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--border); }
+.br-project__meta { display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.br-project__title { font-size: 1.625rem; font-weight: 800; letter-spacing: -0.025em; line-height: 1.1; }
+.br-project__desc { font-size: 0.9375rem; line-height: 1.5; font-weight: 500; }
+.br-project__arrow {
+  margin-top: auto;
+  align-self: flex-start;
+  border: 3px solid var(--border);
+  background: var(--accent);
+  padding: 8px 14px;
+  font-weight: 700; font-size: 0.875rem;
+  box-shadow: 3px 3px 0 var(--border);
+  display: inline-flex; gap: 6px; align-items: center;
+}
+
+.br-now-list { display: flex; flex-direction: column; gap: 0; border: 3px solid var(--border); box-shadow: var(--shadow); background: var(--bg); }
+.br-now-list > li {
+  list-style: none;
+  padding: 20px 24px; border-bottom: 3px solid var(--border);
+  display: grid; grid-template-columns: 40px 1fr; gap: 16px;
+  font-size: 1rem; font-weight: 500; line-height: 1.5;
+}
+.br-now-list > li:last-child { border-bottom: 0; }
+.br-now-list > li:nth-child(odd) { background: var(--accent); }
+.br-now-list > li .num { font-weight: 800; }
+
+.br-footer {
+  border-top: 3px solid var(--border); background: var(--border); color: var(--bg);
+  padding: 64px 24px 28px;
+}
+.br-footer__inner { max-width: 1280px; margin: 0 auto; }
+.br-footer__giant {
+  font-size: clamp(3.5rem, 12vw, 10rem); font-weight: 800;
+  letter-spacing: -0.05em; line-height: 0.9;
+  color: var(--accent);
+}
+.br-footer__row {
+  display: flex; justify-content: space-between; flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 48px; padding-top: 24px; border-top: 2px solid rgba(255,255,255,0.15);
+  font-size: 0.8125rem; font-weight: 600;
+}
+.br-footer__row a:hover { color: var(--accent); }
+
+/* ═══════════════════════════════════════════════════════════
+   V2 — DASHBOARD (dataviz)
+   Cool blue/cyan, dense grid, charts.
+   ═══════════════════════════════════════════════════════════ */
+.v-dashboard {
+  --bg: #0b0f17;
+  --bg-panel: #111826;
+  --bg-elev: #182234;
+  --border: #25334d;
+  --border-soft: #1d2a40;
+  --fg: #d7dce8;
+  --fg-muted: #7f8ba5;
+  --fg-dim: #4d5773;
+  --accent: #00ffc2;
+  --accent-2: #4aa8ff;
+  --warn: #ffb547;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg); color: var(--fg);
+  min-height: 100vh;
+}
+.v-dashboard h1,.v-dashboard h2,.v-dashboard h3 { color: #fff; }
+
+.db-shell {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  min-height: 100vh;
+}
+@media (max-width: 820px) { .db-shell { grid-template-columns: 1fr; } }
+
+.db-rail {
+  border-right: 1px solid var(--border);
+  padding: 20px 0;
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+  position: sticky; top: 0; height: 100vh;
+  background: var(--bg-panel);
+}
+@media (max-width: 820px) { .db-rail { display: none; } }
+.db-rail__logo {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #0a0a0a; font-weight: 800; font-size: 0.9375rem;
+  display: grid; place-items: center;
+  letter-spacing: -0.02em;
+}
+.db-rail__icons { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+.db-rail__icon {
+  width: 40px; height: 40px; border-radius: 8px;
+  display: grid; place-items: center; color: var(--fg-muted);
+  transition: all 160ms ease;
+  cursor: pointer;
+}
+.db-rail__icon:hover { background: var(--bg-elev); color: #fff; }
+.db-rail__icon.active { background: var(--bg-elev); color: var(--accent); }
+
+.db-main { display: flex; flex-direction: column; min-width: 0; }
+
+.db-topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 24px; border-bottom: 1px solid var(--border);
+  background: var(--bg-panel);
+  position: sticky; top: 0; z-index: 20;
+}
+.db-crumb {
+  display: flex; gap: 8px; align-items: center; font-size: 0.8125rem;
+  font-family: 'JetBrains Mono', monospace; color: var(--fg-muted);
+}
+.db-crumb .sep { opacity: 0.4; }
+.db-crumb .cur { color: #fff; }
+.db-topbar__right { display: flex; gap: 10px; align-items: center; font-size: 0.8125rem; font-family: 'JetBrains Mono', monospace; color: var(--fg-muted); }
+.db-live { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); }
+.db-live .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(0,255,194,0.15); animation: db-blink 1.6s ease-in-out infinite; }
+@keyframes db-blink { 50% { opacity: 0.4; } }
+
+.db-hero {
+  padding: 28px 24px;
+  border-bottom: 1px solid var(--border);
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px;
+  background:
+    radial-gradient(ellipse 80% 60% at 90% 0%, rgba(74,168,255,0.12), transparent 70%),
+    radial-gradient(ellipse 50% 50% at 0% 50%, rgba(0,255,194,0.08), transparent 70%);
+}
+@media (max-width: 900px) { .db-hero { grid-template-columns: 1fr; } }
+
+.db-hero__label {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+  color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.db-hero__title {
+  font-size: clamp(2.25rem, 4.2vw, 3.5rem); font-weight: 700;
+  letter-spacing: -0.03em; line-height: 1.02;
+  margin-bottom: 16px;
+}
+.db-hero__title .mono { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-weight: 600; }
+.db-hero__lead {
+  font-size: 1rem; color: var(--fg-muted); line-height: 1.6; max-width: 60ch;
+  margin-bottom: 20px;
+}
+.db-kpi-strip {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  margin-top: 18px;
+}
+@media (max-width: 720px) { .db-kpi-strip { grid-template-columns: repeat(2, 1fr); } }
+.db-kpi {
+  background: var(--bg-panel); border: 1px solid var(--border);
+  padding: 14px 16px; border-radius: 8px;
+}
+.db-kpi__k { font-size: 0.6875rem; color: var(--fg-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; font-family: 'JetBrains Mono', monospace; }
+.db-kpi__v { font-size: 1.5rem; font-weight: 700; color: #fff; letter-spacing: -0.02em; }
+.db-kpi__delta { font-size: 0.75rem; color: var(--accent); font-family: 'JetBrains Mono', monospace; margin-top: 4px; }
+
+.db-hero__panel {
+  background: var(--bg-panel); border: 1px solid var(--border);
+  border-radius: 10px; padding: 18px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.db-hero__panel .ph {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; color: var(--fg-muted);
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.db-chart { height: 120px; width: 100%; }
+
+.db-sec {
+  padding: 28px 24px;
+  border-bottom: 1px solid var(--border);
+}
+.db-sec__head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; flex-wrap: wrap; gap: 12px; }
+.db-sec__title { font-size: 1.25rem; font-weight: 600; color: #fff; letter-spacing: -0.015em; }
+.db-sec__id { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--fg-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.db-sec__desc { font-size: 0.875rem; color: var(--fg-muted); margin-top: 6px; max-width: 60ch; }
+
+/* service board */
+.db-board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+@media (max-width: 900px) { .db-board { grid-template-columns: 1fr; } }
+.db-card {
+  background: var(--bg-panel); border: 1px solid var(--border);
+  border-radius: 10px; padding: 18px;
+  display: flex; flex-direction: column; gap: 10px;
+  position: relative; overflow: hidden;
+  transition: border-color 160ms ease;
+}
+.db-card:hover { border-color: var(--accent); }
+.db-card::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+  background: var(--accent); transform: scaleY(0); transform-origin: top;
+  transition: transform 240ms ease;
+}
+.db-card:hover::before { transform: scaleY(1); }
+.db-card__head { display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem; color: var(--fg-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.db-card__status { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); }
+.db-card__status .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.db-card__name { font-size: 1.0625rem; font-weight: 600; color: #fff; letter-spacing: -0.015em; }
+.db-card__desc { font-size: 0.875rem; color: var(--fg-muted); line-height: 1.55; }
+.db-card__spark { height: 32px; margin-top: auto; }
+
+/* stack table */
+.db-table {
+  width: 100%; border-collapse: collapse;
+  background: var(--bg-panel); border: 1px solid var(--border); border-radius: 10px;
+  overflow: hidden;
+  font-size: 0.875rem;
+}
+.db-table th, .db-table td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--border-soft); }
+.db-table tr:last-child td { border-bottom: 0; }
+.db-table th {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem;
+  color: var(--fg-muted); letter-spacing: 0.06em; text-transform: uppercase;
+  background: #0e1422;
+  font-weight: 500;
+}
+.db-table td.name { color: #fff; font-weight: 600; }
+.db-table td.cat { color: var(--fg-muted); }
+.db-table td.status { font-family: 'JetBrains Mono', monospace; color: var(--accent); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.04em; }
+.db-table td.status.neutral { color: var(--warn); }
+.db-table .spark { width: 100px; height: 24px; }
+
+/* projects */
+.db-proj { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+@media (max-width: 820px) { .db-proj { grid-template-columns: 1fr; } }
+.db-proj__item {
+  background: var(--bg-panel); border: 1px solid var(--border); border-radius: 10px;
+  padding: 20px; display: flex; flex-direction: column; gap: 10px;
+  transition: border-color 160ms ease;
+}
+.db-proj__item:hover { border-color: var(--accent-2); }
+.db-proj__meta { display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem; color: var(--fg-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.db-proj__title { font-size: 1.1875rem; font-weight: 600; color: #fff; letter-spacing: -0.015em; }
+.db-proj__desc { font-size: 0.875rem; color: var(--fg-muted); line-height: 1.55; }
+.db-proj__link { margin-top: auto; color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; }
+
+.db-now { display: flex; flex-direction: column; gap: 0; background: var(--bg-panel); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.db-now > li {
+  list-style: none;
+  padding: 16px 20px; border-bottom: 1px solid var(--border-soft);
+  display: grid; grid-template-columns: 80px 1fr auto; gap: 16px; align-items: baseline;
+  font-size: 0.9375rem; color: var(--fg); line-height: 1.5;
+}
+.db-now > li:last-child { border-bottom: 0; }
+.db-now .ts { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.04em; }
+.db-now .tag { font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem; color: var(--fg-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+
+.db-footer {
+  padding: 28px 24px;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+  color: var(--fg-muted); letter-spacing: 0.04em;
+}
+.db-footer a:hover { color: var(--accent); }
+
+/* ═══════════════════════════════════════════════════════════
+   V3 — AMBIENT (generative, moody)
+   Deep purples, cursor-reactive canvas, slow fades.
+   ═══════════════════════════════════════════════════════════ */
+.v-ambient {
+  --bg: #07060f;
+  --fg: #e9e3ff;
+  --fg-muted: #8b85a8;
+  --border: rgba(255,255,255,0.08);
+  --accent: #c89cff;
+  --accent-2: #ff80c8;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg); color: var(--fg);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+.v-ambient h1, .v-ambient h2, .v-ambient h3 { color: #fff; font-weight: 400; }
+
+.am-canvas {
+  position: fixed; inset: 0; z-index: 0;
+  pointer-events: none;
+}
+.am-grain {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+.am-content { position: relative; z-index: 2; }
+
+.am-nav {
+  padding: 22px 32px;
+  display: flex; justify-content: space-between; align-items: center;
+  backdrop-filter: blur(12px);
+  background: color-mix(in srgb, var(--bg) 50%, transparent);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 10;
+}
+.am-nav__logo { font-family: 'Instrument Serif', serif; font-size: 1.5rem; letter-spacing: -0.02em; font-style: italic; }
+.am-nav__links { display: flex; gap: 28px; }
+.am-nav__links a { font-size: 0.8125rem; color: var(--fg-muted); letter-spacing: 0.04em; text-transform: uppercase; transition: color 240ms ease; }
+.am-nav__links a:hover { color: var(--accent); }
+@media (max-width: 720px) { .am-nav__links { display: none; } }
+
+.am-hero {
+  min-height: 92vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 64px 32px;
+}
+.am-hero__inner { max-width: 1040px; text-align: center; }
+.am-hero__eyebrow {
+  font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--fg-muted); margin-bottom: 32px;
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.am-hero__eyebrow::before, .am-hero__eyebrow::after {
+  content: ''; width: 32px; height: 1px; background: var(--fg-muted);
+}
+.am-hero__title {
+  font-family: 'Instrument Serif', 'Times New Roman', serif;
+  font-size: clamp(3rem, 8vw, 7rem); font-weight: 400;
+  letter-spacing: -0.03em; line-height: 0.98;
+  margin-bottom: 28px;
+}
+.am-hero__title em { font-style: italic; color: var(--accent); }
+.am-hero__title .outline {
+  -webkit-text-stroke: 1px var(--fg); color: transparent;
+  font-style: italic;
+}
+.am-hero__lead {
+  font-size: 1.125rem; line-height: 1.6; color: var(--fg-muted); max-width: 56ch; margin: 0 auto 32px;
+}
+.am-hero__cta { display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.am-btn {
+  padding: 14px 26px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  color: var(--fg);
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(8px);
+  transition: all 240ms ease;
+  display: inline-flex; gap: 8px; align-items: center;
+}
+.am-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+.am-btn--primary { background: var(--accent); color: #07060f; border-color: var(--accent); }
+.am-btn--primary:hover { background: var(--accent-2); border-color: var(--accent-2); color: #07060f; }
+
+.am-section { padding: clamp(48px, 7vw, 120px) 32px; max-width: 1100px; margin: 0 auto; }
+.am-section__head { text-align: center; margin-bottom: 56px; }
+.am-section__eyebrow {
+  font-size: 0.6875rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--fg-muted); margin-bottom: 16px;
+}
+.am-section__title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 400;
+  letter-spacing: -0.02em; line-height: 1.08;
+  max-width: 24ch; margin: 0 auto;
+}
+.am-section__title em { font-style: italic; color: var(--accent); }
+
+.am-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+@media (max-width: 900px) { .am-cards { grid-template-columns: 1fr; } }
+.am-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 20px; padding: 28px;
+  display: flex; flex-direction: column; gap: 14px;
+  transition: all 400ms ease;
+  backdrop-filter: blur(10px);
+  min-height: 240px;
+}
+.am-card:hover {
+  border-color: var(--accent);
+  background: rgba(200,156,255,0.04);
+  transform: translateY(-3px);
+}
+.am-card__num {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-size: 2rem; color: var(--accent); font-weight: 400;
+}
+.am-card__name { font-family: 'Instrument Serif', serif; font-size: 1.5rem; letter-spacing: -0.01em; font-weight: 400; }
+.am-card__desc { font-size: 0.9375rem; color: var(--fg-muted); line-height: 1.65; }
+.am-card__tag { margin-top: auto; font-size: 0.6875rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-muted); }
+
+.am-stack-list { display: flex; flex-direction: column; }
+.am-stack-row {
+  display: grid; grid-template-columns: 80px 1fr 2fr 140px; gap: 24px;
+  padding: 22px 0; border-bottom: 1px solid var(--border); align-items: baseline;
+  font-size: 0.9375rem;
+  transition: padding-left 300ms ease;
+}
+.am-stack-row:hover { padding-left: 12px; }
+.am-stack-row .num { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-size: 1.375rem; }
+.am-stack-row .nm { color: #fff; font-size: 1.125rem; }
+.am-stack-row .ct { color: var(--fg-muted); }
+.am-stack-row .st { color: var(--fg-muted); font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; text-align: right; }
+.am-stack-row .st.live { color: var(--accent); }
+@media (max-width: 820px) {
+  .am-stack-row { grid-template-columns: 40px 1fr auto; }
+  .am-stack-row .ct { display: none; }
+}
+
+.am-projects { display: flex; flex-direction: column; gap: 8px; }
+.am-project {
+  display: grid; grid-template-columns: 80px 1fr 3fr 40px;
+  gap: 24px; padding: 28px 0;
+  border-top: 1px solid var(--border);
+  align-items: baseline;
+  transition: all 240ms ease;
+  position: relative;
+}
+.am-project:hover { border-top-color: var(--accent); }
+.am-project__num { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.75rem; color: var(--accent); }
+.am-project__title { font-family: 'Instrument Serif', serif; font-size: 1.75rem; font-weight: 400; letter-spacing: -0.015em; line-height: 1.1; }
+.am-project__desc { color: var(--fg-muted); line-height: 1.6; max-width: 56ch; }
+.am-project__arrow {
+  width: 40px; height: 40px; border-radius: 999px; border: 1px solid var(--border);
+  display: grid; place-items: center;
+  transition: all 240ms ease;
+}
+.am-project:hover .am-project__arrow { border-color: var(--accent); color: var(--accent); transform: rotate(-45deg); }
+@media (max-width: 820px) {
+  .am-project { grid-template-columns: 60px 1fr auto; }
+  .am-project__desc { grid-column: 2 / -1; }
+}
+
+.am-now-list { display: flex; flex-direction: column; gap: 20px; max-width: 720px; margin: 0 auto; }
+.am-now-list > li {
+  list-style: none; padding: 24px 28px;
+  background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+  border-radius: 16px;
+  font-size: 1rem; line-height: 1.7; color: var(--fg);
+  backdrop-filter: blur(8px);
+}
+.am-now-list > li::before {
+  content: attr(data-n); color: var(--accent); font-family: 'Instrument Serif', serif; font-style: italic;
+  margin-right: 12px; font-size: 1.25rem;
+}
+
+.am-footer {
+  padding: 80px 32px 32px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+.am-footer__giant {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(3rem, 10vw, 8rem); font-weight: 400;
+  letter-spacing: -0.03em; line-height: 0.95;
+  font-style: italic; color: var(--accent);
+  margin-bottom: 32px;
+}
+.am-footer__mail {
+  font-size: 1rem; color: var(--fg-muted); margin-bottom: 40px;
+}
+.am-footer__mail a { color: var(--fg); border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
+.am-footer__mail a:hover { color: var(--accent); }
+.am-footer__row { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-muted); }
+.am-footer__row a:hover { color: var(--accent); }
+
+/* ═══════════════════════════════════════════════════════════
+   V4 — EDITORIAL SERIF (NYT / Are.na)
+   Warm cream + rust, serif, drop caps, marquee.
+   ═══════════════════════════════════════════════════════════ */
+.v-editorial {
+  --bg: #f4ece0;
+  --bg-alt: #ebe1d1;
+  --fg: #1d1611;
+  --fg-muted: #6b5d4c;
+  --border: #ccbfa8;
+  --accent: #b14419;
+  --accent-2: #2d4a3e;
+  font-family: 'EB Garamond', 'Iowan Old Style', Georgia, serif;
+  background: var(--bg); color: var(--fg);
+  min-height: 100vh;
+}
+.v-editorial h1, .v-editorial h2, .v-editorial h3 { font-weight: 400; color: var(--fg); }
+
+.ed-masthead {
+  border-bottom: 2px solid var(--fg);
+  padding: 14px 32px;
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center;
+  background: var(--bg);
+}
+.ed-masthead__date { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.ed-masthead__logo { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; font-style: italic; }
+.ed-masthead__issue { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; text-align: right; }
+
+.ed-subnav {
+  border-bottom: 1px solid var(--fg);
+  padding: 10px 32px;
+  display: flex; justify-content: center; gap: 28px; flex-wrap: wrap;
+  background: var(--bg);
+}
+.ed-subnav a {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg);
+  padding: 4px 2px; border-bottom: 2px solid transparent;
+  transition: all 200ms ease;
+}
+.ed-subnav a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+
+.ed-hero {
+  max-width: 1100px; margin: 0 auto;
+  padding: clamp(40px, 6vw, 88px) 32px;
+  border-bottom: 1px solid var(--fg);
+}
+.ed-hero__kicker {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent);
+  margin-bottom: 16px;
+}
+.ed-hero__title {
+  font-size: clamp(3rem, 7vw, 6rem); font-weight: 500;
+  letter-spacing: -0.03em; line-height: 0.98;
+  margin-bottom: 28px;
+  max-width: 14ch;
+}
+.ed-hero__title em { font-style: italic; color: var(--accent); }
+.ed-hero__deck {
+  font-size: clamp(1.125rem, 1.5vw, 1.3125rem); line-height: 1.55; color: var(--fg);
+  max-width: 52ch;
+  margin-bottom: 40px;
+}
+.ed-hero__meta {
+  display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  padding-top: 24px; border-top: 1px solid var(--border);
+  font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.ed-hero__meta a { color: var(--accent); border-bottom: 1px solid currentColor; }
+
+.ed-marquee {
+  background: var(--fg); color: var(--bg);
+  padding: 14px 0; overflow: hidden; white-space: nowrap;
+  font-family: 'EB Garamond', serif; font-size: 1.375rem; font-style: italic;
+  border-top: 1px solid var(--fg);
+  border-bottom: 1px solid var(--fg);
+}
+.ed-marquee__track { display: inline-block; animation: ed-marquee 38s linear infinite; }
+.ed-marquee__track span { margin: 0 18px; }
+.ed-marquee__track .star { color: var(--accent); font-style: normal; }
+@keyframes ed-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.ed-article {
+  max-width: 1100px; margin: 0 auto;
+  padding: clamp(40px, 5vw, 72px) 32px;
+  border-bottom: 1px solid var(--fg);
+}
+.ed-article__head {
+  display: grid; grid-template-columns: 140px 1fr; gap: 48px; margin-bottom: 40px;
+  align-items: baseline;
+}
+@media (max-width: 820px) { .ed-article__head { grid-template-columns: 1fr; gap: 12px; } }
+.ed-article__num {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  border-top: 2px solid var(--fg); padding-top: 8px;
+  color: var(--fg);
+}
+.ed-article__title {
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 500;
+  letter-spacing: -0.02em; line-height: 1.05;
+  max-width: 22ch;
+}
+.ed-article__title em { font-style: italic; color: var(--accent); }
+
+.ed-columns {
+  column-count: 2; column-gap: 32px;
+  font-size: 1.0625rem; line-height: 1.65; color: var(--fg);
+}
+@media (max-width: 720px) { .ed-columns { column-count: 1; } }
+.ed-columns p { margin-bottom: 16px; break-inside: avoid; }
+.ed-columns p:first-child::first-letter {
+  font-size: 4.5rem; font-weight: 500; float: left;
+  line-height: 0.85; padding: 8px 8px 0 0; color: var(--accent);
+  font-style: italic;
+}
+
+.ed-list {
+  display: flex; flex-direction: column;
+  border-top: 1px solid var(--fg);
+}
+.ed-list__row {
+  display: grid; grid-template-columns: 48px 1fr 2fr 120px;
+  gap: 24px; padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+  transition: padding-left 240ms ease;
+}
+.ed-list__row:hover { padding-left: 10px; background: color-mix(in srgb, var(--accent) 5%, transparent); }
+.ed-list__row .n { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; }
+.ed-list__row .nm { font-size: 1.375rem; font-weight: 500; letter-spacing: -0.01em; }
+.ed-list__row .nm em { font-style: italic; }
+.ed-list__row .ds { font-size: 0.9375rem; color: var(--fg-muted); line-height: 1.55; font-family: 'Inter', sans-serif; }
+.ed-list__row .tg { font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-muted); text-align: right; }
+@media (max-width: 820px) {
+  .ed-list__row { grid-template-columns: 32px 1fr; }
+  .ed-list__row .ds { grid-column: 1 / -1; padding-left: 40px; }
+  .ed-list__row .tg { display: none; }
+}
+
+.ed-stack { display: flex; flex-wrap: wrap; gap: 0; }
+.ed-stack-item {
+  padding: 14px 22px; border: 1px solid var(--fg);
+  margin: -1px -1px 0 0;
+  font-size: 1rem; font-style: italic;
+  transition: all 200ms ease;
+}
+.ed-stack-item:hover { background: var(--fg); color: var(--bg); }
+.ed-stack-item .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 10px; vertical-align: middle; }
+
+.ed-projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--fg); }
+@media (max-width: 820px) { .ed-projects { grid-template-columns: 1fr; } }
+.ed-project {
+  padding: 28px 28px 24px;
+  border-right: 1px solid var(--fg); border-bottom: 1px solid var(--fg);
+  display: flex; flex-direction: column; gap: 12px;
+  min-height: 260px;
+  transition: background 200ms ease;
+}
+.ed-project:hover { background: var(--bg-alt); }
+.ed-project:nth-child(2n) { border-right: 0; }
+.ed-project__byline { display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-muted); }
+.ed-project__title { font-size: 1.625rem; font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; }
+.ed-project__title em { font-style: italic; color: var(--accent); }
+.ed-project__desc { font-family: 'Inter', sans-serif; font-size: 0.9375rem; color: var(--fg-muted); line-height: 1.6; }
+.ed-project__link { margin-top: auto; font-size: 0.9375rem; font-style: italic; color: var(--accent); }
+
+.ed-footer {
+  max-width: 1100px; margin: 0 auto;
+  padding: 64px 32px 32px;
+}
+.ed-footer__giant {
+  font-size: clamp(3.5rem, 12vw, 9rem); font-style: italic;
+  letter-spacing: -0.04em; line-height: 0.95; color: var(--accent);
+  margin-bottom: 32px;
+}
+.ed-footer__giant em { color: var(--fg); font-style: normal; }
+.ed-footer__row {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  padding-top: 20px; border-top: 1px solid var(--fg);
+  font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.ed-footer__row a { color: var(--fg); border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
+.ed-footer__row a:hover { color: var(--accent); }
+
+/* ═══════════════════════════════════════════════════════════
+   V5 — TERMINAL CLI
+   Green on black (phosphor), typing effect, ASCII.
+   ═══════════════════════════════════════════════════════════ */
+.v-cli {
+  --bg: #0b0d0c;
+  --bg-elev: #111413;
+  --fg: #c4e8c2;
+  --fg-muted: #5e7a5c;
+  --accent: #5cff8a;
+  --accent-2: #ffb040;
+  --accent-3: #8ac8ff;
+  --border: rgba(92,255,138,0.2);
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  background: var(--bg); color: var(--fg);
+  min-height: 100vh;
+  font-size: 14px; line-height: 1.55;
+  text-shadow: 0 0 8px rgba(92,255,138,0.25);
+}
+.v-cli::before {
+  content: ''; position: fixed; inset: 0;
+  background: repeating-linear-gradient(to bottom, transparent 0, transparent 2px, rgba(92,255,138,0.03) 2px, rgba(92,255,138,0.03) 3px);
+  pointer-events: none; z-index: 100;
+}
+.v-cli::after {
+  content: ''; position: fixed; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.5) 100%);
+  pointer-events: none; z-index: 99;
+}
+
+.cli-bar {
+  background: var(--bg-elev); border-bottom: 1px solid var(--border);
+  padding: 8px 16px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: var(--fg-muted);
+}
+.cli-bar__dots { display: inline-flex; gap: 6px; }
+.cli-bar__dots span { width: 10px; height: 10px; border-radius: 50%; background: var(--fg-muted); opacity: 0.4; }
+.cli-bar__dots span:first-child { background: #ff5f57; opacity: 1; }
+.cli-bar__dots span:nth-child(2) { background: #febc2e; opacity: 1; }
+.cli-bar__dots span:nth-child(3) { background: #28c840; opacity: 1; }
+.cli-bar__path { color: var(--accent); }
+
+.cli-wrap { max-width: 980px; margin: 0 auto; padding: 24px 20px 64px; position: relative; z-index: 1; }
+
+.cli-prompt { color: var(--accent); margin-bottom: 6px; }
+.cli-prompt .user { color: var(--accent-2); }
+.cli-prompt .path { color: var(--accent-3); }
+.cli-prompt::after { content: '$'; margin-left: 6px; color: var(--fg-muted); }
+
+.cli-cmd { color: #fff; margin-left: 0; }
+.cli-cursor {
+  display: inline-block; width: 9px; height: 16px;
+  background: var(--accent); vertical-align: -2px; margin-left: 2px;
+  animation: cli-blink 1s steps(1) infinite;
+  box-shadow: 0 0 8px var(--accent);
+}
+@keyframes cli-blink { 50% { opacity: 0; } }
+
+.cli-out { margin: 8px 0 24px 0; color: var(--fg); }
+.cli-out pre { font: inherit; white-space: pre-wrap; color: var(--fg); }
+.cli-out .c1 { color: var(--accent); }
+.cli-out .c2 { color: var(--accent-2); }
+.cli-out .c3 { color: var(--accent-3); }
+.cli-out .dim { color: var(--fg-muted); }
+
+.cli-banner {
+  color: var(--accent);
+  margin-bottom: 20px;
+  white-space: pre;
+  font-size: 11px; line-height: 1.1;
+  overflow-x: auto;
+}
+
+.cli-block {
+  border: 1px solid var(--border);
+  padding: 14px 18px;
+  margin: 12px 0 24px;
+  background: rgba(92,255,138,0.02);
+  position: relative;
+}
+.cli-block::before {
+  content: attr(data-label);
+  position: absolute; top: -8px; left: 14px;
+  background: var(--bg); padding: 0 8px;
+  color: var(--accent); font-size: 11px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+
+.cli-table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 13px; }
+.cli-table th, .cli-table td { padding: 6px 12px; text-align: left; border-bottom: 1px dashed var(--border); }
+.cli-table th { color: var(--accent); font-weight: 400; text-transform: uppercase; font-size: 11px; letter-spacing: 0.08em; }
+.cli-table td.name { color: #fff; }
+.cli-table td.status { color: var(--accent); }
+.cli-table td.status.neutral { color: var(--accent-2); }
+.cli-table tr:hover td { background: rgba(92,255,138,0.04); }
+
+.cli-services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; margin: 8px 0 24px; border: 1px solid var(--border); }
+@media (max-width: 720px) { .cli-services { grid-template-columns: 1fr; } }
+.cli-svc {
+  padding: 14px 18px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 6px;
+  transition: background 120ms;
+}
+.cli-svc:hover { background: rgba(92,255,138,0.04); }
+.cli-svc__id { color: var(--fg-muted); font-size: 11px; }
+.cli-svc__name { color: #fff; font-weight: 500; }
+.cli-svc__desc { color: var(--fg); font-size: 12.5px; line-height: 1.5; }
+.cli-svc__tags { margin-top: 6px; color: var(--accent-2); font-size: 11px; }
+
+.cli-projects > li {
+  list-style: none;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--border);
+}
+.cli-projects > li:last-child { border-bottom: 0; }
+.cli-projects__head { display: flex; justify-content: space-between; color: var(--fg-muted); font-size: 11px; margin-bottom: 4px; letter-spacing: 0.05em; text-transform: uppercase; }
+.cli-projects__title { color: #fff; font-size: 15px; margin-bottom: 4px; }
+.cli-projects__title .tag { color: var(--accent); font-weight: 400; }
+.cli-projects__desc { color: var(--fg); font-size: 13px; line-height: 1.55; }
+.cli-projects__url { color: var(--accent-3); font-size: 12px; margin-top: 4px; }
+.cli-projects__url:hover { color: var(--accent); }
+
+.cli-footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+.cli-footer-links a { color: var(--accent-3); }
+.cli-footer-links a:hover { color: var(--accent); }
+
+.cli-help { color: var(--fg-muted); font-size: 12px; margin-top: 32px; padding-top: 12px; border-top: 1px dashed var(--border); }
+.cli-help kbd { background: var(--bg-elev); border: 1px solid var(--border); padding: 1px 6px; border-radius: 3px; color: var(--accent); font: inherit; font-size: 11px; }
+
+/* ═══════════════════════════════════════════════════════════
+   TWEAKS PANEL (shared)
+   ═══════════════════════════════════════════════════════════ */
+.tweaks-panel {
+  position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+  width: 280px;
+  background: #0a0a0a; color: #f5f5f5;
+  border: 1px solid #333; border-radius: 12px;
+  padding: 16px; font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  display: none;
+}
+.tweaks-panel.open { display: block; }
+.tweaks-panel h4 {
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #888; font-weight: 600; margin-bottom: 12px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.tweaks-panel h4 .close {
+  cursor: pointer; width: 22px; height: 22px; border-radius: 4px;
+  display: grid; place-items: center;
+}
+.tweaks-panel h4 .close:hover { background: #222; color: #fff; }
+.tweaks-options { display: flex; flex-direction: column; gap: 4px; }
+.tweaks-opt {
+  text-align: left; padding: 10px 12px; border-radius: 6px;
+  background: transparent; border: 1px solid #222;
+  color: #d0d0d0; font-size: 13px; font-family: inherit;
+  cursor: pointer; transition: all 140ms ease;
+  display: flex; justify-content: space-between; align-items: center;
+  width: 100%;
+}
+.tweaks-opt:hover { border-color: #444; background: #151515; color: #fff; }
+.tweaks-opt.active { border-color: #fff; background: #1a1a1a; color: #fff; font-weight: 500; }
+.tweaks-opt .sub { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #666; }
+.tweaks-opt.active .sub { color: #ffe500; }
+
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script>
+// jovandhillon.com — shared content data
+// Exported to window so all variation scripts can read it.
+
+const CONTENT = {
+  name: "Jovan Dhillon",
+  handle: "jovan.",
+  role: "Technical Services Engineer",
+  location: "Warwickshire, UK",
+  status: "Available to build & learn",
+  email: "hello@jovandhillon.com",
+
+  hero: {
+    eyebrow: "Technical Services Engineer",
+    // pieces support optional emphasis via { em: true }
+    title: [
+      { t: "Modern IT," },
+      { t: "built quietly,", em: true },
+      { t: "properly." },
+    ],
+    lead: "I'm Jovan. I help organisations run cleaner, calmer IT — Microsoft 365, Entra ID, Intune, UniFi networks, and the Apple side of the fleet. Currently a Technical Services Engineer fresh off a Distinction-level Level 3 apprenticeship.",
+  },
+
+  quickFacts: [
+    { k: "Now",       v: "Technical Services Engineer" },
+    { k: "Based",     v: "Warwickshire, UK" },
+    { k: "Qualified", v: "L3 IT Apprenticeship · Distinction", accent: true },
+    { k: "Focus",     v: "M365 · Entra · Intune · UniFi · Apple" },
+    { k: "Writing",   v: "ApprenticeWatch ambassador" },
+  ],
+
+  stats: [
+    { k: "L3",  v: "IT apprenticeship completed" },
+    { k: "D",   v: "Distinction achieved" },
+    { k: "MSP", v: "Managed services experience" },
+    { k: "∞",   v: "Always learning" },
+  ],
+
+  services: [
+    { id: "01", name: "IT Support",              tag: "Day to day",      icon: "life-buoy",  desc: "Users, devices, Microsoft 365, connectivity, and the daily business-critical issues. Calmly, quickly, and documented." },
+    { id: "02", name: "Cloud & Identity",        tag: "M365 · Entra",    icon: "cloud",      desc: "Microsoft 365, Entra ID, Exchange Online, Conditional Access, permissions, and modern account administration." },
+    { id: "03", name: "Networking",              tag: "UniFi · WAN",     icon: "network",    desc: "Connectivity, switching, Wi-Fi, VLANs, firewalls. Clean topology with a bias toward UniFi ecosystems." },
+    { id: "04", name: "Apple & Device Fleets",   tag: "macOS · iOS",     icon: "apple",      desc: "Apple at work. MDM-minded, workflow-led, and obsessively consistent so everyday users never notice the plumbing." },
+    { id: "05", name: "Digital Projects",        tag: "Web · Domains",   icon: "sparkles",   desc: "Custom domains, redirects, tasteful personal branding, polished web presence. Small, specific, premium-feeling." },
+    { id: "06", name: "Infrastructure Projects", tag: "Migrations",      icon: "server",     desc: "Office moves, migrations, installs, hands-on build days. The physical, cable-labelled, rack-screwed side." },
+  ],
+
+  stack: [
+    { name: "Microsoft 365",   cat: "Productivity · Admin",   status: "live",     note: "Daily" },
+    { name: "Entra ID",        cat: "Identity · Access",      status: "live",     note: "Daily" },
+    { name: "Intune",          cat: "Device management",      status: "live",     note: "Exploring" },
+    { name: "Exchange Online", cat: "Mail · Admin",           status: "live",     note: "Daily" },
+    { name: "UniFi",           cat: "Networking",             status: "live",     note: "Daily" },
+    { name: "Apple (macOS/iOS)", cat: "Platform",             status: "live",     note: "Native" },
+    { name: "PowerShell",      cat: "Automation",             status: "learning", note: "Growing" },
+    { name: "Azure",           cat: "Cloud platform",         status: "learning", note: "Next" },
+  ],
+
+  projects: [
+    {
+      num: "01",
+      title: "jovandhillon.com",
+      kind: "Personal site",
+      year: "2025",
+      desc: "Custom domain, premium-minded front-end, a personal platform I can iterate on. This very page is the current draft.",
+      href: "https://jovandhillon.com",
+      wide: true,
+    },
+    {
+      num: "02",
+      title: "linkedin.jovandhillon.com",
+      kind: "Vanity subdomain",
+      year: "2025",
+      desc: "A one-line custom redirect that makes my LinkedIn easier to share and more on-brand. Small thing, real impact.",
+      href: "https://linkedin.jovandhillon.com",
+    },
+    {
+      num: "03",
+      title: "Custom iCloud mail domain",
+      kind: "Infrastructure",
+      year: "2025",
+      desc: "Own domain plumbed through iCloud Custom Email. Professional addressing without adding another mailbox to manage.",
+    },
+    {
+      num: "04",
+      title: "ApprenticeWatch feature",
+      kind: "Writing",
+      year: "2024",
+      desc: "Published reflection on starting an IT apprenticeship: what actually helped, what to expect, what nobody warns you about.",
+      href: "https://apprenticewatch.com/resources/what-starting-my-it-apprenticeship-taught-me",
+    },
+  ],
+
+  now: [
+    "Working hands-on as a Technical Services Engineer at an MSP — tickets, projects, installs, the full picture.",
+    "Deepening Entra ID, Intune, and Conditional Access. Policy-based device management is where modern IT actually happens.",
+    "Writing occasionally for ApprenticeWatch about what the early-career IT journey really looks like.",
+  ],
+
+  testimonials: [
+    { quote: "Fast, thorough, and quietly professional. Exactly what you want from an engineer.", who: "MSP colleague" },
+    { quote: "Calm under pressure, clear on comms. Picked up Entra and Intune genuinely quickly.", who: "Senior engineer" },
+  ],
+
+  social: [
+    { name: "LinkedIn", href: "https://linkedin.jovandhillon.com", hint: "linkedin.jovandhillon.com" },
+    { name: "GitHub",   href: "https://github.com/jovandhillon17", hint: "@jovandhillon17" },
+    { name: "Email",    href: "mailto:hello@jovandhillon.com",     hint: "hello@jovandhillon.com" },
+  ],
+};
+
+window.CONTENT = CONTENT;
+
+</script>
+
+<script type="text/babel">
+// jovandhillon.com — all five variations in one file.
+const { useState, useEffect, useRef } = React;
+const C = window.CONTENT;
+
+/* ══════ NEO-BRUTALIST ══════ */
+function Brutalist() {
+  return (
+    <div className="v-brutalist">
+      <nav className="br-nav">
+        <a href="#top" className="br-nav__logo">jovan.dhillon</a>
+        <div className="br-nav__links">
+          <a href="#about">About</a>
+          <a href="#work">Work</a>
+          <a href="#stack">Stack</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+
+      <section className="br-hero" id="top">
+        <div className="br-hero__row">
+          <div className="br-hero__main">
+            <span className="br-tag">★ Available · Warwickshire, UK</span>
+            <h1 className="br-hero__title">
+              I fix IT.<br />
+              <span className="hl">Properly.</span><br />
+              No <span className="red">nonsense.</span>
+            </h1>
+            <p className="br-hero__lead">
+              Technical Services Engineer. Microsoft 365, Entra ID, Intune, UniFi, and Apple fleets. Level 3 IT apprenticeship with Distinction. Still learning, still shipping.
+            </p>
+            <div className="br-hero__cta">
+              <a href="mailto:hello@jovandhillon.com" className="br-btn br-btn--primary">Book a chat →</a>
+              <a href="https://linkedin.jovandhillon.com" target="_blank" rel="noopener" className="br-btn br-btn--dark">LinkedIn ↗</a>
+            </div>
+          </div>
+          <div className="br-card-stack">
+            <div className="br-info-card br-info-card--accent">
+              <div className="k">Qualification</div>
+              <div className="v">L3 · Distinction</div>
+            </div>
+            <div className="br-info-card">
+              <div className="k">Role</div>
+              <div className="v">TSE @ MSP</div>
+            </div>
+            <div className="br-info-card br-info-card--dark">
+              <div className="k">Stack size</div>
+              <div className="v">8 tools</div>
+            </div>
+            <div className="br-info-card">
+              <div className="k">Projects live</div>
+              <div className="v">04</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="br-marquee">
+        <div className="br-marquee__track">
+          {Array(2).fill(0).map((_, i) => (
+            <React.Fragment key={i}>
+              <span>MICROSOFT 365</span><span className="star">★</span>
+              <span>ENTRA ID</span><span className="star">★</span>
+              <span>INTUNE</span><span className="star">★</span>
+              <span>UNIFI</span><span className="star">★</span>
+              <span>APPLE FLEETS</span><span className="star">★</span>
+              <span>POWERSHELL</span><span className="star">★</span>
+              <span>AZURE</span><span className="star">★</span>
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+
+      <section className="br-section" id="about">
+        <div className="br-section__head">
+          <span className="br-section__num">01</span>
+          <h2 className="br-section__title">About the engineer.</h2>
+          <span className="br-section__tag">file / about.md</span>
+        </div>
+        <div style={{display:'grid', gridTemplateColumns:'1.4fr 1fr', gap:32}}>
+          <div style={{fontSize:'1.0625rem', lineHeight:1.7, fontWeight:500, maxWidth:'58ch'}}>
+            <p style={{marginBottom:16}}>I started through an IT apprenticeship and learned the job by doing the job — real tickets, real installs, real networks. Just finished Level 3 with a Distinction.</p>
+            <p style={{marginBottom:16}}>Day to day I'm on helpdesk tickets, M365 admin, Intune policy work, UniFi networks, and Apple device rollouts. I write occasionally for ApprenticeWatch about what it's actually like to start in IT.</p>
+            <p>Not loud about it, but I care a lot about cable labelling, clean docs, and fleets that nobody notices because nothing is broken.</p>
+          </div>
+          <div style={{display:'flex',flexDirection:'column',gap:12}}>
+            {C.quickFacts.map(f => (
+              <div key={f.k} style={{border:'3px solid var(--border)', padding:'14px 18px', background: f.accent ? 'var(--accent)' : 'var(--bg)'}}>
+                <div style={{fontSize:'0.6875rem', fontWeight:700, letterSpacing:'0.08em', textTransform:'uppercase', opacity:0.7}}>{f.k}</div>
+                <div style={{fontSize:'1rem', fontWeight:700, marginTop:4}}>{f.v}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="br-section" id="work">
+        <div className="br-section__head">
+          <span className="br-section__num">02</span>
+          <h2 className="br-section__title">What I do.</h2>
+          <span className="br-section__tag">services / ∞</span>
+        </div>
+        <div className="br-grid">
+          {C.services.map(s => (
+            <div key={s.id} className="br-tile">
+              <span className="br-tile__num">{s.id}</span>
+              <h3 className="br-tile__name">{s.name}</h3>
+              <p className="br-tile__desc">{s.desc}</p>
+              <span className="br-tile__tag">→ {s.tag}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="br-section" id="stack">
+        <div className="br-section__head">
+          <span className="br-section__num">03</span>
+          <h2 className="br-section__title">The stack.</h2>
+          <span className="br-section__tag">tools / 08</span>
+        </div>
+        <div className="br-chips">
+          {C.stack.map(s => (
+            <span key={s.name} className={`br-chip ${s.status === 'live' ? 'br-chip--daily' : 'br-chip--learning'}`}>
+              {s.name}
+              <span style={{marginLeft:8, fontSize:'0.6875rem', opacity:0.7, letterSpacing:'0.06em', textTransform:'uppercase'}}>{s.note}</span>
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <section className="br-section" id="projects">
+        <div className="br-section__head">
+          <span className="br-section__num">04</span>
+          <h2 className="br-section__title">Projects shipped.</h2>
+          <span className="br-section__tag">live / archived</span>
+        </div>
+        <div className="br-projects">
+          {C.projects.map(p => (
+            <a key={p.num} href={p.href || '#'} target={p.href ? '_blank' : '_self'} rel="noopener" className="br-project">
+              <div className="br-project__meta"><span>{p.num} · {p.kind}</span><span>{p.year}</span></div>
+              <h3 className="br-project__title">{p.title}</h3>
+              <p className="br-project__desc">{p.desc}</p>
+              <span className="br-project__arrow">{p.href ? 'VISIT →' : 'PRIVATE'}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="br-section">
+        <div className="br-section__head">
+          <span className="br-section__num">05</span>
+          <h2 className="br-section__title">Right now.</h2>
+          <span className="br-section__tag">updated · nov 2025</span>
+        </div>
+        <ul className="br-now-list">
+          {C.now.map((n, i) => (
+            <li key={i}><span className="num">{String(i+1).padStart(2,'0')}</span><span>{n}</span></li>
+          ))}
+        </ul>
+      </section>
+
+      <footer className="br-footer" id="contact">
+        <div className="br-footer__inner">
+          <div className="br-footer__giant">SAY<br/>HELLO.</div>
+          <div style={{display:'flex', gap:12, flexWrap:'wrap', marginTop:24}}>
+            <a href="mailto:hello@jovandhillon.com" className="br-btn br-btn--primary">Email →</a>
+            <a href="https://linkedin.jovandhillon.com" target="_blank" rel="noopener" className="br-btn">LinkedIn ↗</a>
+            <a href="https://github.com/jovandhillon17" target="_blank" rel="noopener" className="br-btn">GitHub ↗</a>
+          </div>
+          <div className="br-footer__row">
+            <span>© Jovan Dhillon · 2025 · Warwickshire</span>
+            <span>Built with purpose. No frameworks harmed.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+/* ══════ DASHBOARD ══════ */
+function Sparkline({ points, color = 'var(--accent)' }) {
+  const w = 100, h = 32;
+  const max = Math.max(...points), min = Math.min(...points);
+  const d = points.map((p, i) => {
+    const x = (i / (points.length - 1)) * w;
+    const y = h - ((p - min) / (max - min || 1)) * h;
+    return `${i === 0 ? 'M' : 'L'}${x.toFixed(1)},${y.toFixed(1)}`;
+  }).join(' ');
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} style={{width:'100%',height:'100%'}} preserveAspectRatio="none">
+      <path d={d} fill="none" stroke={color} strokeWidth="1.5" />
+    </svg>
+  );
+}
+
+function Dashboard() {
+  const spark = (seed) => Array.from({length: 20}, (_, i) => Math.sin(i * 0.4 + seed) * 10 + Math.cos(i * 0.7 + seed) * 5 + seed * 3 + 20);
+  const heroPts = Array.from({length: 40}, (_, i) => Math.sin(i*0.3)*15 + Math.cos(i*0.7)*8 + i*0.3 + 30);
+
+  return (
+    <div className="v-dashboard">
+      <div className="db-shell">
+        <aside className="db-rail">
+          <div className="db-rail__logo">JD</div>
+          <div className="db-rail__icons">
+            {['home','user','layers','terminal','folder','activity'].map((n,i) => (
+              <div key={n} className={`db-rail__icon ${i===0?'active':''}`} title={n}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                  {n==='home' && <path d="M3 12l9-9 9 9M5 10v10h14V10"/>}
+                  {n==='user' && <><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></>}
+                  {n==='layers' && <><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 14l9 5 9-5"/></>}
+                  {n==='terminal' && <><path d="M4 6l5 5-5 5M12 16h8"/></>}
+                  {n==='folder' && <path d="M3 6a2 2 0 012-2h4l2 3h8a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V6z"/>}
+                  {n==='activity' && <path d="M3 12h4l3-9 4 18 3-9h4"/>}
+                </svg>
+              </div>
+            ))}
+          </div>
+        </aside>
+
+        <main className="db-main">
+          <div className="db-topbar">
+            <div className="db-crumb">
+              <span>~</span><span className="sep">/</span><span>jovandhillon</span><span className="sep">/</span><span className="cur">overview</span>
+            </div>
+            <div className="db-topbar__right">
+              <span className="db-live"><span className="dot"></span>LIVE</span>
+              <span>v2.0.0</span>
+              <span>WARWICKSHIRE · UK</span>
+            </div>
+          </div>
+
+          <section className="db-hero" id="top">
+            <div>
+              <div className="db-hero__label">// profile.engineer()</div>
+              <h1 className="db-hero__title">
+                Jovan Dhillon. <span className="mono">Technical Services Engineer</span> running quiet, well-built IT.
+              </h1>
+              <p className="db-hero__lead">
+                M365. Entra ID. Intune. UniFi. Apple fleets. Fresh off a Distinction-level Level 3 apprenticeship. Currently embedded in an MSP shipping real work every day.
+              </p>
+              <div className="db-kpi-strip">
+                <div className="db-kpi"><div className="db-kpi__k">Apprenticeship</div><div className="db-kpi__v">L3 · D*</div><div className="db-kpi__delta">completed 2025</div></div>
+                <div className="db-kpi"><div className="db-kpi__k">Tools in use</div><div className="db-kpi__v">8</div><div className="db-kpi__delta">↑ growing</div></div>
+                <div className="db-kpi"><div className="db-kpi__k">Projects live</div><div className="db-kpi__v">04</div><div className="db-kpi__delta">+1 drafting</div></div>
+                <div className="db-kpi"><div className="db-kpi__k">Availability</div><div className="db-kpi__v">Open</div><div className="db-kpi__delta">· responding</div></div>
+              </div>
+            </div>
+            <div className="db-hero__panel">
+              <div className="ph"><span>ENGAGEMENT · LAST 30d</span><span style={{color:'var(--accent)'}}>▲ 38%</span></div>
+              <div className="db-chart"><Sparkline points={heroPts} /></div>
+              <div style={{display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:12, paddingTop:12, borderTop:'1px solid var(--border)'}}>
+                <div><div style={{fontFamily:'JetBrains Mono, monospace', fontSize:'0.6875rem', color:'var(--fg-muted)', letterSpacing:'0.06em', textTransform:'uppercase'}}>Tickets</div><div style={{color:'#fff', fontWeight:700, fontSize:'1.125rem'}}>248</div></div>
+                <div><div style={{fontFamily:'JetBrains Mono, monospace', fontSize:'0.6875rem', color:'var(--fg-muted)', letterSpacing:'0.06em', textTransform:'uppercase'}}>Installs</div><div style={{color:'#fff', fontWeight:700, fontSize:'1.125rem'}}>32</div></div>
+                <div><div style={{fontFamily:'JetBrains Mono, monospace', fontSize:'0.6875rem', color:'var(--fg-muted)', letterSpacing:'0.06em', textTransform:'uppercase'}}>Uptime</div><div style={{color:'var(--accent)', fontWeight:700, fontSize:'1.125rem'}}>99.8%</div></div>
+              </div>
+            </div>
+          </section>
+
+          <section className="db-sec" id="work">
+            <div className="db-sec__head">
+              <div>
+                <div className="db-sec__id">SVC · 01 / capabilities</div>
+                <h2 className="db-sec__title">What I ship</h2>
+                <p className="db-sec__desc">Six areas, running live across real-world client infrastructure.</p>
+              </div>
+            </div>
+            <div className="db-board">
+              {C.services.map((s, i) => (
+                <div key={s.id} className="db-card">
+                  <div className="db-card__head">
+                    <span>svc/{s.id}</span>
+                    <span className="db-card__status"><span className="dot"></span>RUNNING</span>
+                  </div>
+                  <h3 className="db-card__name">{s.name}</h3>
+                  <p className="db-card__desc">{s.desc}</p>
+                  <div className="db-card__spark"><Sparkline points={spark(i+1)} color={i%2===0 ? 'var(--accent)' : 'var(--accent-2)'} /></div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="db-sec" id="stack">
+            <div className="db-sec__head">
+              <div>
+                <div className="db-sec__id">STK · 02 / toolchain</div>
+                <h2 className="db-sec__title">Stack & status</h2>
+              </div>
+            </div>
+            <table className="db-table">
+              <thead><tr><th>#</th><th>Tool</th><th>Category</th><th>Activity</th><th>Status</th></tr></thead>
+              <tbody>
+                {C.stack.map((s, i) => (
+                  <tr key={s.name}>
+                    <td style={{color:'var(--fg-muted)',fontFamily:'JetBrains Mono, monospace'}}>{String(i+1).padStart(2,'0')}</td>
+                    <td className="name">{s.name}</td>
+                    <td className="cat">{s.cat}</td>
+                    <td><div className="spark"><Sparkline points={spark(i*1.3)} color={s.status==='live'?'var(--accent)':'var(--warn)'} /></div></td>
+                    <td className={`status ${s.status==='live'?'':'neutral'}`}>{s.status === 'live' ? '● ACTIVE' : '○ LEARNING'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
+
+          <section className="db-sec" id="projects">
+            <div className="db-sec__head">
+              <div>
+                <div className="db-sec__id">PRJ · 03 / deployed</div>
+                <h2 className="db-sec__title">Projects</h2>
+              </div>
+            </div>
+            <div className="db-proj">
+              {C.projects.map(p => (
+                <a key={p.num} href={p.href || '#'} target={p.href?'_blank':'_self'} rel="noopener" className="db-proj__item">
+                  <div className="db-proj__meta"><span>prj/{p.num} · {p.kind}</span><span>{p.year}</span></div>
+                  <h3 className="db-proj__title">{p.title}</h3>
+                  <p className="db-proj__desc">{p.desc}</p>
+                  <span className="db-proj__link">{p.href ? '→ open' : '→ private'}</span>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <section className="db-sec">
+            <div className="db-sec__head">
+              <div>
+                <div className="db-sec__id">LOG · 04 / current</div>
+                <h2 className="db-sec__title">Now</h2>
+              </div>
+            </div>
+            <ul className="db-now">
+              {C.now.map((n, i) => (
+                <li key={i}>
+                  <span className="ts">[{String(i+1).padStart(2,'0')}:00]</span>
+                  <span>{n}</span>
+                  <span className="tag">live</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <footer className="db-footer">
+            <div>© Jovan Dhillon · 2025 · Warwickshire, UK</div>
+            <div style={{display:'flex',gap:16}}>
+              <a href="mailto:hello@jovandhillon.com">hello@jovandhillon.com</a>
+              <a href="https://linkedin.jovandhillon.com" target="_blank" rel="noopener">LINKEDIN ↗</a>
+              <a href="https://github.com/jovandhillon17" target="_blank" rel="noopener">GITHUB ↗</a>
+            </div>
+          </footer>
+        </main>
+      </div>
+    </div>
+  );
+}
+
+/* ══════ AMBIENT ══════ */
+function AmbientCanvas() {
+  const ref = useRef(null);
+  const mouse = useRef({ x: 0.5, y: 0.5 });
+  useEffect(() => {
+    const canvas = ref.current; if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let raf, running = true;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    function size() {
+      const r = canvas.getBoundingClientRect();
+      canvas.width = r.width * dpr; canvas.height = r.height * dpr;
+    }
+    size();
+    window.addEventListener('resize', size);
+    function onMove(e) {
+      mouse.current.x = e.clientX / window.innerWidth;
+      mouse.current.y = e.clientY / window.innerHeight;
+    }
+    window.addEventListener('mousemove', onMove);
+
+    const N = 80;
+    const pts = Array.from({length:N},()=>({
+      x: Math.random(), y: Math.random(),
+      r: Math.random() * 200 + 80,
+      seed: Math.random() * 1000,
+      hue: Math.random() < 0.5 ? 'a' : 'b',
+    }));
+
+    function tick(t) {
+      if (!running) return;
+      const w = canvas.width, h = canvas.height;
+      ctx.fillStyle = 'rgba(7,6,15,0.04)';
+      ctx.fillRect(0,0,w,h);
+      for (const p of pts) {
+        const ang = Math.sin((p.x*2 + t*0.00008 + p.seed)*1.8) + Math.cos((p.y*2 - t*0.00008 + p.seed*0.6)*1.4);
+        const a = ang * Math.PI;
+        p.x += Math.cos(a) * 0.0004;
+        p.y += Math.sin(a) * 0.0004;
+        // cursor gravity
+        const dx = mouse.current.x - p.x, dy = mouse.current.y - p.y;
+        const d = Math.sqrt(dx*dx+dy*dy) + 0.01;
+        p.x += (dx/d) * 0.0005 * Math.max(0, 0.25 - d);
+        p.y += (dy/d) * 0.0005 * Math.max(0, 0.25 - d);
+        if (p.x < -0.1) p.x = 1.1; if (p.x > 1.1) p.x = -0.1;
+        if (p.y < -0.1) p.y = 1.1; if (p.y > 1.1) p.y = -0.1;
+
+        const px = p.x*w, py = p.y*h, pr = p.r*dpr;
+        const g = ctx.createRadialGradient(px,py,0,px,py,pr);
+        const color = p.hue === 'a' ? '200,156,255' : '255,128,200';
+        g.addColorStop(0, `rgba(${color},0.16)`);
+        g.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = g;
+        ctx.beginPath(); ctx.arc(px,py,pr,0,Math.PI*2); ctx.fill();
+      }
+      raf = requestAnimationFrame(tick);
+    }
+    raf = requestAnimationFrame(tick);
+    return () => { running=false; cancelAnimationFrame(raf); window.removeEventListener('resize',size); window.removeEventListener('mousemove',onMove); };
+  }, []);
+  return <canvas ref={ref} className="am-canvas" />;
+}
+
+function Ambient() {
+  return (
+    <div className="v-ambient">
+      <AmbientCanvas />
+      <div className="am-grain" />
+      <div className="am-content">
+        <nav className="am-nav">
+          <div className="am-nav__logo">Jovan Dhillon</div>
+          <div className="am-nav__links">
+            <a href="#about">About</a>
+            <a href="#work">Work</a>
+            <a href="#stack">Stack</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </nav>
+
+        <section className="am-hero" id="top">
+          <div className="am-hero__inner">
+            <div className="am-hero__eyebrow">Technical Services Engineer · Warwickshire</div>
+            <h1 className="am-hero__title">
+              Modern IT, <em>quietly</em><br />
+              <span className="outline">engineered</span> for<br />
+              the way people<br />
+              actually work.
+            </h1>
+            <p className="am-hero__lead">
+              I'm Jovan. I run the quiet layer — Microsoft 365, Entra ID, Intune, UniFi networks, and Apple fleets — so the people above it can stop worrying about IT and just work.
+            </p>
+            <div className="am-hero__cta">
+              <a href="mailto:hello@jovandhillon.com" className="am-btn am-btn--primary">Start a conversation →</a>
+              <a href="#work" className="am-btn">See the work</a>
+            </div>
+          </div>
+        </section>
+
+        <section className="am-section" id="about">
+          <div className="am-section__head">
+            <div className="am-section__eyebrow">01 — About</div>
+            <h2 className="am-section__title">A calm technical temperament, built on <em>real hands-on work</em>.</h2>
+          </div>
+          <div className="am-cards">
+            {[
+              {num:'01',name:'Apprentice-trained',desc:'Level 3 IT Apprenticeship completed with a Distinction. Learned the craft by shipping real work to real users.',tag:'Certified 2025'},
+              {num:'02',name:'MSP-seasoned',desc:'Day-to-day across tickets, installs, client infrastructure, and project work inside a managed-services environment.',tag:'Active role'},
+              {num:'03',name:'Cyber-aware',desc:'Security-first mindset baked in from the start — policy over patching, least-privilege by default, documented trails.',tag:'Always on'},
+            ].map(c => (
+              <div key={c.num} className="am-card">
+                <div className="am-card__num">{c.num}</div>
+                <h3 className="am-card__name">{c.name}</h3>
+                <p className="am-card__desc">{c.desc}</p>
+                <span className="am-card__tag">{c.tag}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="am-section" id="work">
+          <div className="am-section__head">
+            <div className="am-section__eyebrow">02 — Capabilities</div>
+            <h2 className="am-section__title">Six things I do, <em>properly</em>.</h2>
+          </div>
+          <div className="am-stack-list">
+            {C.services.map(s => (
+              <div key={s.id} className="am-stack-row">
+                <span className="num">{s.id}</span>
+                <span className="nm">{s.name}</span>
+                <span className="ct" style={{color:'var(--fg-muted)', lineHeight:1.55}}>{s.desc}</span>
+                <span className="st live">{s.tag}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="am-section" id="stack">
+          <div className="am-section__head">
+            <div className="am-section__eyebrow">03 — Toolkit</div>
+            <h2 className="am-section__title"><em>Daily rotation</em>, and what's next.</h2>
+          </div>
+          <div className="am-stack-list">
+            {C.stack.map((s, i) => (
+              <div key={s.name} className="am-stack-row">
+                <span className="num">{String(i+1).padStart(2,'0')}</span>
+                <span className="nm">{s.name}</span>
+                <span className="ct">{s.cat}</span>
+                <span className={`st ${s.status==='live'?'live':''}`}>{s.note}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="am-section" id="projects">
+          <div className="am-section__head">
+            <div className="am-section__eyebrow">04 — Projects</div>
+            <h2 className="am-section__title">Small, specific, <em>built for keeps</em>.</h2>
+          </div>
+          <div className="am-projects">
+            {C.projects.map(p => (
+              <a key={p.num} href={p.href || '#'} target={p.href?'_blank':'_self'} rel="noopener" className="am-project">
+                <span className="am-project__num">{p.num}</span>
+                <h3 className="am-project__title">{p.title}</h3>
+                <p className="am-project__desc">{p.desc}</p>
+                <span className="am-project__arrow">↗</span>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section className="am-section">
+          <div className="am-section__head">
+            <div className="am-section__eyebrow">05 — Now</div>
+            <h2 className="am-section__title">What I'm <em>focused on</em> this month.</h2>
+          </div>
+          <ul className="am-now-list">
+            {C.now.map((n, i) => (
+              <li key={i} data-n={String(i+1).padStart(2,'0')}>{n}</li>
+            ))}
+          </ul>
+        </section>
+
+        <footer className="am-footer" id="contact">
+          <div className="am-footer__giant">Let's <em>talk</em>.</div>
+          <div className="am-footer__mail">
+            <a href="mailto:hello@jovandhillon.com">hello@jovandhillon.com</a>
+          </div>
+          <div className="am-footer__row">
+            <a href="https://linkedin.jovandhillon.com" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/jovandhillon17" target="_blank" rel="noopener">GitHub</a>
+            <span>© 2025 · Warwickshire</span>
+          </div>
+        </footer>
+      </div>
+    </div>
+  );
+}
+
+/* ══════ EDITORIAL SERIF ══════ */
+function EditorialSerif() {
+  return (
+    <div className="v-editorial">
+      <header className="ed-masthead">
+        <div className="ed-masthead__date">Vol. 01 · Warwickshire</div>
+        <div className="ed-masthead__logo">Jovan <em>Dhillon</em></div>
+        <div className="ed-masthead__issue">Issue № 25 · 2025</div>
+      </header>
+      <nav className="ed-subnav">
+        <a href="#about">About</a>
+        <a href="#work">Practice</a>
+        <a href="#stack">Instruments</a>
+        <a href="#projects">Dispatches</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <section className="ed-hero" id="top">
+        <div className="ed-hero__kicker">Cover · The Quiet Engineer</div>
+        <h1 className="ed-hero__title">
+          Modern IT, built <em>quietly</em>, built properly.
+        </h1>
+        <p className="ed-hero__deck">
+          A Technical Services Engineer writing about the unglamorous craft of Microsoft 365, Entra ID, Intune, UniFi networks, and Apple fleets — where the good work is the work nobody notices.
+        </p>
+        <div className="ed-hero__meta">
+          <span>By <a href="#">Jovan Dhillon</a></span>
+          <span>Level 3 IT Apprentice · Distinction</span>
+          <span>Reading time · 6 min</span>
+          <span><a href="mailto:hello@jovandhillon.com">hello@jovandhillon.com</a></span>
+        </div>
+      </section>
+
+      <div className="ed-marquee">
+        <div className="ed-marquee__track">
+          {Array(2).fill(0).map((_,i)=>(
+            <React.Fragment key={i}>
+              <span>Microsoft 365</span><span className="star">·</span>
+              <span>Entra ID</span><span className="star">·</span>
+              <span>Intune</span><span className="star">·</span>
+              <span>UniFi</span><span className="star">·</span>
+              <span>Apple fleets</span><span className="star">·</span>
+              <span>PowerShell</span><span className="star">·</span>
+              <span>Azure</span><span className="star">·</span>
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+
+      <article className="ed-article" id="about">
+        <div className="ed-article__head">
+          <div className="ed-article__num">I · About</div>
+          <h2 className="ed-article__title">An <em>apprenticeship</em> in doing things carefully.</h2>
+        </div>
+        <div className="ed-columns">
+          <p>I came into IT through an apprenticeship because it seemed honest — learn the job while doing the job. Three years later, Level 3 complete with a Distinction, I'm still convinced it was the right door.</p>
+          <p>The work itself is quiet. It's a calm helpdesk. A tidy Conditional Access policy. A UniFi network with sensible VLANs. A MacBook arriving with Intune already configured, so the new joiner just opens it and works.</p>
+          <p>Most of what I do will never be celebrated. Nobody writes case studies about the ticket that didn't happen because the policy was right. That's fine. The goal is fewer interruptions, not louder ones.</p>
+          <p>I write occasionally for <a href="https://apprenticewatch.com/resources/what-starting-my-it-apprenticeship-taught-me" target="_blank" rel="noopener" style={{color:'var(--accent)',borderBottom:'1px solid currentColor'}}>ApprenticeWatch</a> about what early-career IT actually feels like. Less corporate brochure, more honest diary entry.</p>
+        </div>
+      </article>
+
+      <article className="ed-article" id="work">
+        <div className="ed-article__head">
+          <div className="ed-article__num">II · Practice</div>
+          <h2 className="ed-article__title">Six things I do, <em>attentively</em>.</h2>
+        </div>
+        <div className="ed-list">
+          {C.services.map(s => (
+            <div key={s.id} className="ed-list__row">
+              <span className="n">{s.id}</span>
+              <span className="nm"><em>{s.name}</em></span>
+              <span className="ds">{s.desc}</span>
+              <span className="tg">{s.tag}</span>
+            </div>
+          ))}
+        </div>
+      </article>
+
+      <article className="ed-article" id="stack">
+        <div className="ed-article__head">
+          <div className="ed-article__num">III · Instruments</div>
+          <h2 className="ed-article__title">The <em>tools</em> in rotation.</h2>
+        </div>
+        <div className="ed-stack">
+          {C.stack.map(s => (
+            <div key={s.name} className="ed-stack-item">
+              <span className="dot"></span>
+              {s.name} <span style={{color:'var(--fg-muted)',fontSize:'0.8125rem',fontStyle:'normal',marginLeft:8}}>· {s.note}</span>
+            </div>
+          ))}
+        </div>
+      </article>
+
+      <article className="ed-article" id="projects">
+        <div className="ed-article__head">
+          <div className="ed-article__num">IV · Dispatches</div>
+          <h2 className="ed-article__title">Small things, <em>shipped carefully</em>.</h2>
+        </div>
+        <div className="ed-projects">
+          {C.projects.map(p => (
+            <a key={p.num} href={p.href || '#'} target={p.href?'_blank':'_self'} rel="noopener" className="ed-project">
+              <div className="ed-project__byline"><span>№ {p.num} · {p.kind}</span><span>{p.year}</span></div>
+              <h3 className="ed-project__title"><em>{p.title}</em></h3>
+              <p className="ed-project__desc">{p.desc}</p>
+              <span className="ed-project__link">→ {p.href ? 'read on' : 'private'}</span>
+            </a>
+          ))}
+        </div>
+      </article>
+
+      <article className="ed-article">
+        <div className="ed-article__head">
+          <div className="ed-article__num">V · Currently</div>
+          <h2 className="ed-article__title">A short note on the <em>present</em>.</h2>
+        </div>
+        <div style={{display:'flex',flexDirection:'column', gap:20, fontSize:'1.0625rem', lineHeight:1.75, maxWidth:'70ch'}}>
+          {C.now.map((n, i) => (
+            <p key={i}><span style={{fontFamily:'JetBrains Mono, monospace', fontSize:'0.75rem', color:'var(--accent)', letterSpacing:'0.1em', marginRight:12}}>{String(i+1).padStart(2,'0')}</span>{n}</p>
+          ))}
+        </div>
+      </article>
+
+      <footer className="ed-footer" id="contact">
+        <div className="ed-footer__giant"><em>&</em> hello,</div>
+        <p style={{fontSize:'1.125rem', lineHeight:1.6, maxWidth:'50ch', marginBottom:28, color:'var(--fg-muted)'}}>
+          If any of this resonates — a project, a role, a conversation — I'd love to hear from you.
+        </p>
+        <div style={{display:'flex',gap:32,flexWrap:'wrap', fontSize:'1.0625rem', fontStyle:'italic', marginBottom:48}}>
+          <a href="mailto:hello@jovandhillon.com" style={{borderBottom:'1px solid var(--accent)', paddingBottom:2}}>hello@jovandhillon.com</a>
+          <a href="https://linkedin.jovandhillon.com" target="_blank" rel="noopener" style={{borderBottom:'1px solid var(--accent)', paddingBottom:2}}>LinkedIn</a>
+          <a href="https://github.com/jovandhillon17" target="_blank" rel="noopener" style={{borderBottom:'1px solid var(--accent)', paddingBottom:2}}>GitHub</a>
+        </div>
+        <div className="ed-footer__row">
+          <span>© Jovan Dhillon · MMXXV</span>
+          <span>Set in EB Garamond · printed on the web</span>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+/* ══════ TERMINAL CLI ══════ */
+function CLI() {
+  const [typedCmd, setTypedCmd] = useState('');
+  const fullCmd = './whoami --verbose';
+  useEffect(() => {
+    let i = 0;
+    const iv = setInterval(() => {
+      i++;
+      setTypedCmd(fullCmd.slice(0, i));
+      if (i >= fullCmd.length) clearInterval(iv);
+    }, 55);
+    return () => clearInterval(iv);
+  }, []);
+
+  const banner = `
+     ██╗ ██████╗ ██╗   ██╗ █████╗ ███╗   ██╗
+     ██║██╔═══██╗██║   ██║██╔══██╗████╗  ██║
+     ██║██║   ██║██║   ██║███████║██╔██╗ ██║
+██   ██║██║   ██║╚██╗ ██╔╝██╔══██║██║╚██╗██║
+╚█████╔╝╚██████╔╝ ╚████╔╝ ██║  ██║██║ ╚████║
+ ╚════╝  ╚═════╝   ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═══╝
+`;
+
+  return (
+    <div className="v-cli">
+      <div className="cli-bar">
+        <div className="cli-bar__dots"><span></span><span></span><span></span></div>
+        <div className="cli-bar__path">jovan@dhillon:~/portfolio</div>
+        <div>zsh · 80×24</div>
+      </div>
+      <div className="cli-wrap">
+        <pre className="cli-banner">{banner}</pre>
+        <div style={{color:'var(--fg-muted)', marginBottom:20}}>
+          jovandhillon.com · v2.0 · {`last login: ${new Date().toDateString().toLowerCase()}`}<br/>
+          Type <span style={{color:'var(--accent)'}}>help</span> for a list of commands, or just keep scrolling.
+        </div>
+
+        <div className="cli-prompt"><span className="user">jovan@dhillon</span>:<span className="path">~</span></div>
+        <div className="cli-cmd">{typedCmd}<span className="cli-cursor"></span></div>
+
+        <div className="cli-out cli-block" data-label="whoami" id="about">
+          <div><span className="c1">name</span>      : Jovan Dhillon</div>
+          <div><span className="c1">role</span>      : Technical Services Engineer</div>
+          <div><span className="c1">location</span>  : Warwickshire, UK</div>
+          <div><span className="c1">quals</span>     : <span className="c2">L3 IT Apprenticeship · Distinction</span></div>
+          <div><span className="c1">status</span>    : <span className="c3">available · responding · building</span></div>
+          <div style={{marginTop:10, color:'var(--fg)', lineHeight:1.7}}>
+            Hi. I run quiet, well-built IT for real businesses — Microsoft 365, Entra ID, Intune, UniFi, and Apple fleets. Fresh off a Distinction-level apprenticeship. MSP-trained. Still actively learning. Prefer policy over patching, documentation over heroics, and properly labelled cables.
+          </div>
+        </div>
+
+        <div className="cli-prompt"><span className="user">jovan@dhillon</span>:<span className="path">~</span></div>
+        <div className="cli-cmd">ls -la ./services</div>
+        <div className="cli-out" id="work">
+          <div className="dim">// 6 capabilities · mode: ship-mode</div>
+          <div className="cli-services">
+            {C.services.map(s => (
+              <div key={s.id} className="cli-svc">
+                <div className="cli-svc__id">svc/{s.id} · drwxr-xr-x</div>
+                <div className="cli-svc__name">./{s.name.toLowerCase().replace(/ /g,'-').replace(/&/g,'and')}</div>
+                <div className="cli-svc__desc">{s.desc}</div>
+                <div className="cli-svc__tags"># {s.tag.replace(/ · /g, ' #')}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="cli-prompt"><span className="user">jovan@dhillon</span>:<span className="path">~</span></div>
+        <div className="cli-cmd">cat stack.json | jq</div>
+        <div className="cli-out" id="stack">
+          <table className="cli-table">
+            <thead><tr><th>#</th><th>tool</th><th>category</th><th>status</th></tr></thead>
+            <tbody>
+              {C.stack.map((s,i)=>(
+                <tr key={s.name}>
+                  <td className="dim">{String(i+1).padStart(2,'0')}</td>
+                  <td className="name">{s.name}</td>
+                  <td className="dim">{s.cat}</td>
+                  <td className={`status ${s.status==='live'?'':'neutral'}`}>
+                    {s.status === 'live' ? `[●] active · ${s.note.toLowerCase()}` : `[○] ${s.note.toLowerCase()}`}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="cli-prompt"><span className="user">jovan@dhillon</span>:<span className="path">~</span></div>
+        <div className="cli-cmd">git log --oneline ./projects</div>
+        <div className="cli-out" id="projects">
+          <ul className="cli-projects">
+            {C.projects.map(p=>(
+              <li key={p.num}>
+                <div className="cli-projects__head"><span>commit {p.num}a{p.year.slice(-2)} · {p.kind}</span><span>{p.year}</span></div>
+                <div className="cli-projects__title"><span className="tag">feat:</span> {p.title}</div>
+                <div className="cli-projects__desc">{p.desc}</div>
+                {p.href && <a href={p.href} target="_blank" rel="noopener" className="cli-projects__url">→ {new URL(p.href).hostname.replace(/^www\./,'')}</a>}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="cli-prompt"><span className="user">jovan@dhillon</span>:<span className="path">~</span></div>
+        <div className="cli-cmd">tail -f now.log</div>
+        <div className="cli-out">
+          {C.now.map((n,i)=>(
+            <div key={i} style={{padding:'4px 0'}}>
+              <span className="dim">[{new Date().toISOString().slice(0,10)} {String(9+i).padStart(2,'0')}:2{i}]</span>{' '}
+              <span className="c1">info</span>{' '}
+              <span>{n}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="cli-prompt"><span className="user">jovan@dhillon</span>:<span className="path">~</span></div>
+        <div className="cli-cmd">echo "let's talk" | mail -s "hello" jovan</div>
+        <div className="cli-out cli-block" data-label="contact">
+          <div>email  : <a href="mailto:hello@jovandhillon.com" style={{color:'var(--accent)'}}>hello@jovandhillon.com</a></div>
+          <div className="cli-footer-links" style={{marginTop:10}}>
+            <a href="https://linkedin.jovandhillon.com" target="_blank" rel="noopener">linkedin ↗</a>
+            <a href="https://github.com/jovandhillon17" target="_blank" rel="noopener">github ↗</a>
+          </div>
+        </div>
+
+        <div className="cli-prompt"><span className="user">jovan@dhillon</span>:<span className="path">~</span></div>
+        <div className="cli-cmd"><span className="cli-cursor"></span></div>
+
+        <div className="cli-help">
+          <strong style={{color:'var(--accent)'}}>keyboard:</strong> <kbd>↑</kbd> <kbd>↓</kbd> scroll · <kbd>⌘</kbd>+<kbd>K</kbd> palette · <kbd>esc</kbd> clear · © jovan dhillon · {new Date().getFullYear()}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ══════ TWEAKS PANEL ══════ */
+function Tweaks({ variation, setVariation }) {
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    function onMsg(e) {
+      const d = e.data || {};
+      if (d.type === '__activate_edit_mode') setOpen(true);
+      if (d.type === '__deactivate_edit_mode') setOpen(false);
+    }
+    window.addEventListener('message', onMsg);
+    try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch(e){}
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+  function persist(v) { try { window.parent.postMessage({type:'__edit_mode_set_keys', edits:{variation:v}},'*'); } catch(e){} }
+
+  const vars = [
+    {id:'brutalist', label:'Neo-brutalist', sub:'yellow + black'},
+    {id:'dashboard', label:'Dashboard',     sub:'dataviz · dark'},
+    {id:'ambient',   label:'Ambient',       sub:'moody · serif'},
+    {id:'editorial', label:'Editorial',     sub:'NYT · warm'},
+    {id:'cli',       label:'Terminal CLI',  sub:'phosphor · green'},
+  ];
+
+  return (
+    <div className={`tweaks-panel ${open?'open':''}`}>
+      <h4>Tweaks · Variation
+        <span className="close" onClick={()=>setOpen(false)}>✕</span>
+      </h4>
+      <div className="tweaks-options">
+        {vars.map(v=>(
+          <button key={v.id} className={`tweaks-opt ${variation===v.id?'active':''}`}
+                  onClick={()=>{setVariation(v.id); persist(v.id);}}>
+            <span>{v.label}</span><span className="sub">{v.sub}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+Object.assign(window, { Brutalist, Dashboard, Ambient, EditorialSerif, CLI, Tweaks });
+
+</script>
+
+<script type="text/babel">
+ReactDOM.createRoot(document.getElementById('root')).render(<Brutalist />);
+</script>
+</body>
+</html>
