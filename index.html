@@ -34,9 +34,32 @@ img { max-width: 100%; display: block; }
 --border: #1f1f22;
 --shadow: 6px 6px 0 #111111;
 --shadow-lg: 10px 10px 0 #111111;
+   .v-brutalist.light-mode {
+  --bg: #f4f6fb;
+  --fg: #101828;
+  --accent: #2457ff;
+  --accent-2: #4169e1;
+  --border: #d8deea;
+  --shadow: 6px 6px 0 #d8deea;
+  --shadow-lg: 10px 10px 0 #d8deea;
   font-family: 'Space Grotesk', 'Inter', sans-serif;
   background: var(--bg); color: var(--fg);
   min-height: 100vh;
+}
+   .theme-toggle {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--fg);
+  color: var(--bg);
+  font-weight: 700;
+  font-size: 0.8rem;
+  transition: all 180ms ease;
+}
+
+.theme-toggle:hover {
+  background: var(--accent);
+  color: #fff;
 }
 .v-brutalist a { text-decoration: none; }
 
@@ -1153,17 +1176,26 @@ const C = window.CONTENT;
 
 /* ══════ NEO-BRUTALIST ══════ */
 function Brutalist() {
+  const [lightMode, setLightMode] = useState(false);
+
   return (
-    <div className="v-brutalist">
+    <div className={`v-brutalist ${lightMode ? 'light-mode' : ''}`}>
       <nav className="br-nav">
         <a href="#top" className="br-nav__logo">jovan.dhillon</a>
-        <div className="br-nav__links">
-          <a href="#about">About</a>
-          <a href="#work">Work</a>
-          <a href="#stack">Stack</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </div>
+       <div className="br-nav__links">
+  <a href="#about">About</a>
+  <a href="#work">Work</a>
+  <a href="#stack">Stack</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+
+  <button 
+    className="theme-toggle" 
+    onClick={() => setLightMode(!lightMode)}
+  >
+    {lightMode ? 'Dark' : 'Light'}
+  </button>
+</div>
       </nav>
 
       <section className="br-hero" id="top">
