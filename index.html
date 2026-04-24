@@ -24,44 +24,130 @@ img { max-width: 100%; display: block; }
 
 /* ═══════════════════════════════════════════════════════════
    V1 — NEO-BRUTALIST
-   Electric red, black borders, offset shadows.
-   ═══════════════════════════════════════════════════════════ */
-.v-brutalist {
---bg: #050505;
---fg: #f5f5f7;
---accent: #ff3b30;
---accent-2: #ff6b5f;
---border: #1f1f22;
---shadow: 6px 6px 0 #111111;
---shadow-lg: 10px 10px 0 #111111;
-   .v-brutalist.light-mode {
-  --bg: #f4f6fb;
-  --fg: #101828;
-  --accent: #2457ff;
-  --accent-2: #4169e1;
-  --border: #d8deea;
-  --shadow: 6px 6px 0 #d8deea;
-  --shadow-lg: 10px 10px 0 #d8deea;
-  font-family: 'Space Grotesk', 'Inter', sans-serif;
-  background: var(--bg); color: var(--fg);
-  min-height: 100vh;
-}
-   .theme-toggle {
-  padding: 8px 12px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--fg);
-  color: var(--bg);
-  font-weight: 700;
-  font-size: 0.8rem;
-  transition: all 180ms ease;
+═══════════════════════════════════════════════════════════ */
+
+.v-brutalist{
+--bg:#050505;
+--fg:#f5f5f7;
+
+--accent:#ff3b30;
+--accent-2:#ff6b5f;
+
+--border:#1f1f22;
+
+--shadow:6px 6px 0 #111;
+--shadow-lg:10px 10px 0 #111;
+
+font-family:'Space Grotesk','Inter',sans-serif;
+background:var(--bg);
+color:var(--fg);
+min-height:100vh;
+transition:
+background .35s ease,
+color .35s ease;
 }
 
-.theme-toggle:hover {
-  background: var(--accent);
-  color: #fff;
+/* LIGHT MODE — soft Apple-ish white + royal blue */
+.v-brutalist.light-mode{
+--bg:#f4f7fc;
+--fg:#0f172a;
+
+--accent:#2457ff;
+--accent-2:#4169e1;
+
+--border:#d7dfef;
+
+--shadow:6px 6px 0 #d7dfef;
+--shadow-lg:10px 10px 0 #d7dfef;
 }
-.v-brutalist a { text-decoration: none; }
+
+/* smooth transitions */
+.v-brutalist *,
+.v-brutalist *:before,
+.v-brutalist *:after{
+transition:
+background-color .28s ease,
+color .28s ease,
+border-color .28s ease,
+box-shadow .28s ease;
+}
+
+
+/* -------- Toggle switch -------- */
+
+.theme-toggle{
+margin-left:18px;
+width:60px;
+height:32px;
+border-radius:999px;
+border:1px solid var(--border);
+background:#18181b;
+padding:4px;
+display:flex;
+align-items:center;
+cursor:pointer;
+position:relative;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);
+}
+
+.theme-toggle__dot{
+width:22px;
+height:22px;
+border-radius:50%;
+background:var(--accent);
+transform:translateX(0);
+transition:.28s ease;
+box-shadow:0 4px 10px rgba(0,0,0,.25);
+}
+
+.v-brutalist.light-mode .theme-toggle{
+background:#ffffff;
+}
+
+.v-brutalist.light-mode .theme-toggle__dot{
+transform:translateX(28px);
+}
+
+/* optional sun/moon icons */
+.theme-toggle::before{
+content:"☾";
+position:absolute;
+left:10px;
+font-size:11px;
+opacity:.6;
+}
+
+.theme-toggle::after{
+content:"☀";
+position:absolute;
+right:9px;
+font-size:11px;
+opacity:.6;
+}
+
+
+/* white marquee text fix */
+.br-marquee{
+border-top:3px solid var(--border);
+border-bottom:3px solid var(--border);
+background:var(--border);
+color:#fff;
+}
+
+/* footer text fix */
+.br-footer{
+border-top:3px solid var(--border);
+background:var(--border);
+color:#ffffff;
+}
+
+.br-footer a{
+color:#ffffff;
+}
+
+.br-footer__row{
+color:#d1d5db;
+}
 
 .br-nav {
   position: sticky; top: 0; z-index: 50;
@@ -1182,19 +1268,21 @@ function Brutalist() {
     <div className={`v-brutalist ${lightMode ? 'light-mode' : ''}`}>
       <nav className="br-nav">
         <a href="#top" className="br-nav__logo">jovan.dhillon</a>
-       <div className="br-nav__links">
+   <div className="br-nav__links">
   <a href="#about">About</a>
   <a href="#work">Work</a>
   <a href="#stack">Stack</a>
   <a href="#projects">Projects</a>
   <a href="#contact">Contact</a>
 
-  <button 
-    className="theme-toggle" 
-    onClick={() => setLightMode(!lightMode)}
-  >
-    {lightMode ? 'Dark' : 'Light'}
-  </button>
+<button
+className="theme-toggle"
+onClick={()=>setLightMode(!lightMode)}
+aria-label="Toggle dark mode"
+>
+<span className="theme-toggle__dot"></span>
+</button>
+
 </div>
       </nav>
 
