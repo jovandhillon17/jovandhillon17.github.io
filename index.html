@@ -1434,28 +1434,14 @@ aria-label="Toggle dark mode"
   <div className="br-marquee__track">
     {Array(2).fill(0).map((_, i) => (
       <React.Fragment key={i}>
-        {[
-         ["apple","Apple"],
-["tplink","Omada"],
-["ubiquiti","UniFi"],
-["microsoft","Intune"],
-["microsoftentra","Entra"],
-["microsoftazure","Azure"],
-["microsoft365","M365"],
-["powershell","PowerShell"],
-        ].map(([icon, label]) => (
-         <React.Fragment key={icon + "-" + label}>
-            <span className="brand">
-              <img
-                src={"https://cdn.simpleicons.org/" + icon + "/ffffff"}
-                className="brand-logo"
-                alt={`${label} logo`}
-              />
-              {label}
-            </span>
-            <span className="star">|</span>
-          </React.Fragment>
-        ))}
+        <span>MICROSOFT 365</span><span className="star">|</span>
+        <span>ENTRA ID</span><span className="star">|</span>
+        <span>INTUNE</span><span className="star">|</span>
+        <span>UNIFI</span><span className="star">|</span>
+        <span>OMADA</span><span className="star">|</span>
+        <span>APPLE ENTHUSIAST</span><span className="star">|</span>
+        <span>POWERSHELL</span><span className="star">|</span>
+        <span>AZURE</span><span className="star">|</span>
       </React.Fragment>
     ))}
   </div>
