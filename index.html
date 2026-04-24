@@ -1430,71 +1430,36 @@ aria-label="Toggle dark mode"
         </div>
       </section>
 
-     <div className="br-marquee__track">
-{Array(2).fill(0).map((_,i)=>(
-
-<React.Fragment key={i}>
-
-<span className="brand">
-<img src="https://cdn.simpleicons.org/apple/ffffff" className="brand-logo"/>
-Apple
-</span>
-
-<span className="star">|</span>
-
-<span className="brand">
-<img src="https://cdn.simpleicons.org/tplink/ffffff" className="brand-logo"/>
-Omada
-</span>
-
-<span className="star">|</span>
-
-<span className="brand">
-<img src="https://cdn.simpleicons.org/ubiquiti/ffffff" className="brand-logo"/>
-UniFi
-</span>
-
-<span className="star">|</span>
-
-<span className="brand">
-<img src="https://cdn.simpleicons.org/microsoft/ffffff" className="brand-logo"/>
-Intune
-</span>
-
-<span className="star">|</span>
-
-<span className="brand">
-<img src="https://cdn.simpleicons.org/microsoftazure/ffffff" className="brand-logo"/>
-Entra ID
-</span>
-
-<span className="star">|</span>
-
-<span className="brand">
-<img src="https://cdn.simpleicons.org/microsoftazure/ffffff" className="brand-logo"/>
-Azure
-</span>
-
-<span className="star">|</span>
-
-<span className="brand">
-<img src="https://cdn.simpleicons.org/microsoft/ffffff" className="brand-logo"/>
-Microsoft 365
-</span>
-
-<span className="star">|</span>
-
-<span className="brand">
-<img src="https://cdn.simpleicons.org/powershell/ffffff" className="brand-logo"/>
-PowerShell
-</span>
-
-<span className="star">|</span>
-
-</React.Fragment>
-))}
+<div className="br-marquee">
+  <div className="br-marquee__track">
+    {Array(2).fill(0).map((_, i) => (
+      <React.Fragment key={i}>
+        {[
+          ["apple", "Apple"],
+          ["tplink", "Omada"],
+          ["ubiquiti", "UniFi"],
+          ["microsoft", "Intune"],
+          ["microsoftazure", "Entra"],
+          ["microsoftazure", "Azure"],
+          ["microsoft", "M365"],
+          ["powershell", "PowerShell"],
+        ].map(([icon, label]) => (
+         <React.Fragment key={icon + "-" + label}>
+            <span className="brand">
+              <img
+                src={"https://cdn.simpleicons.org/" + icon + "/ffffff"}
+                className="brand-logo"
+                alt={`${label} logo`}
+              />
+              {label}
+            </span>
+            <span className="star">|</span>
+          </React.Fragment>
+        ))}
+      </React.Fragment>
+    ))}
+  </div>
 </div>
-      </div>
 
       <section className="br-section" id="about">
         <div className="br-section__head">
