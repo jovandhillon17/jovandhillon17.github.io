@@ -232,26 +232,28 @@ color:#d1d5db;
   transition: all 120ms ease;
 }
 .br-nav__links a:hover { border-color: var(--border); background: var(--accent); }
-@media (max-width: 720px) {
-  .br-nav {
-    flex-wrap: wrap;
-    gap: 12px;
+@media (max-width:720px){
+  .br-nav{
+    flex-wrap:wrap;
+    gap:12px;
   }
 
-  .br-nav__links {
-    display: flex;
-    width: 100%;
-    overflow-x: auto;
-    gap: 8px;
-    padding-bottom: 4px;
+  .br-nav__links{
+    display:flex;
+    width:100%;
+    gap:8px;
+    overflow-x:auto;
+    padding-bottom:6px;
   }
 
-  .br-nav__links a {
-    white-space: nowrap;
+  .br-nav__links a{
+    white-space:nowrap;
+    flex:0 0 auto;
   }
 
-  .theme-toggle {
-    flex: 0 0 auto;
+  .theme-toggle{
+    flex:0 0 auto;
+    margin-left:4px;
   }
 }
 
