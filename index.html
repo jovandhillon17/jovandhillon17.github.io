@@ -1430,21 +1430,71 @@ aria-label="Toggle dark mode"
         </div>
       </section>
 
-      <div className="br-marquee">
-        <div className="br-marquee__track">
-          {Array(2).fill(0).map((_, i) => (
-            <React.Fragment key={i}>
-              <span>MICROSOFT 365</span><span className="star">|</span>
-              <span>ENTRA ID</span><span className="star">|</span>
-              <span>INTUNE</span><span className="star">|</span>
-              <span>UNIFI</span><span className="star">|</span>
-               <span>OMADA</span><span className="star">|</span>
-              <span>APPLE ENTHUSIAST</span><span className="star">|</span>
-              <span>POWERSHELL</span><span className="star">|</span>
-              <span>AZURE</span><span className="star">|</span>
-            </React.Fragment>
-          ))}
-        </div>
+     <div className="br-marquee__track">
+{Array(2).fill(0).map((_,i)=>(
+
+<React.Fragment key={i}>
+
+<span className="brand">
+<img src="https://cdn.simpleicons.org/apple/ffffff" className="brand-logo"/>
+Apple
+</span>
+
+<span className="star">|</span>
+
+<span className="brand">
+<img src="https://cdn.simpleicons.org/tplink/ffffff" className="brand-logo"/>
+Omada
+</span>
+
+<span className="star">|</span>
+
+<span className="brand">
+<img src="https://cdn.simpleicons.org/ubiquiti/ffffff" className="brand-logo"/>
+UniFi
+</span>
+
+<span className="star">|</span>
+
+<span className="brand">
+<img src="https://cdn.simpleicons.org/microsoftintune/ffffff" className="brand-logo"/>
+Intune
+</span>
+
+<span className="star">|</span>
+
+<span className="brand">
+<img src="https://cdn.simpleicons.org/microsoftazure/ffffff" className="brand-logo"/>
+Entra ID
+</span>
+
+<span className="star">|</span>
+
+<span className="brand">
+<img src="https://cdn.simpleicons.org/microsoftazure/ffffff" className="brand-logo"/>
+Azure
+</span>
+
+<span className="star">|</span>
+
+<span className="brand">
+<img src="https://cdn.simpleicons.org/microsoft/ffffff" className="brand-logo"/>
+Microsoft 365
+</span>
+
+<span className="star">|</span>
+
+<span className="brand">
+<img src="https://cdn.simpleicons.org/powershell/ffffff" className="brand-logo"/>
+PowerShell
+</span>
+
+<span className="star">|</span>
+
+</React.Fragment>
+
+))}
+</div>
       </div>
 
       <section className="br-section" id="about">
