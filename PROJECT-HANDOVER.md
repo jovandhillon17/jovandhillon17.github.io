@@ -2,6 +2,8 @@
 
 A practical operator's guide for picking this project up cold.
 
+*Last updated: July 2026.*
+
 ---
 
 ## 1. What this is
@@ -48,7 +50,7 @@ The `CNAME` file in the repo (`jovandhillon.com`) is a legacy GitHub Pages artif
 
 ```
 .
-├── index.html              ← the entire site (~97KB)
+├── index.html              ← the entire site (~100KB)
 ├── images/                 ← favicons
 │   ├── favicon.ico         ← multi-size (16/32/48), classic tab icon
 │   ├── favicon.png         ← 512×512, modern browsers
@@ -91,7 +93,9 @@ Only `Brutalist` is shipped. The other four (and the `Tweaks` editor panel) are 
 
 ### Where the content lives
 
-Most page text comes from a shared `CONTENT` object (search for `window.CONTENT = CONTENT`). The Brutalist component then reads from `C.quickFacts`, `C.services`, `C.stack`, `C.projects`, `C.publications`, `C.now`, etc.
+Most page text comes from a shared `CONTENT` object (search for `const CONTENT = {`, currently around line 1257). The Brutalist component then reads from `C.quickFacts`, `C.services`, `C.stack`, `C.projects`, `C.publications`, `C.now`, etc.
+
+Line numbers in this document drift every time content is added. Always search for the string, not the line.
 
 Some text (hero copy, About paragraphs) is **hardcoded directly in the Brutalist JSX**, not in `CONTENT`. If editing copy, search for the exact phrase to find it.
 
@@ -127,6 +131,12 @@ Find the `publications:` array inside `CONTENT` and add an entry:
 },
 ```
 
+`type` is free text and is rendered verbatim next to the outlet (`outlet · type`). Existing entries use `Article` and `Feature`; anything short works.
+
+There is **no publications counter** in the hero, so nothing else needs bumping. Entries render in array order, so newest goes last unless you want it higher up the page.
+
+Current entries (3): ApprenticeWatch (2025), Placer Apprenticeships (2026), Association of Apprentices (2026).
+
 ### Add a project
 
 Same pattern, in the `projects:` array. Then bump the "Projects live" counter card in the hero (`<div className="v">03</div>` etc.) if you want it accurate.
@@ -143,7 +153,19 @@ Edit the `<title>` element near the top of `index.html`.
 
 ### Change navigation links
 
-Find `<nav className="br-nav">` (around line ~1375 in `index.html`).
+Find `<nav className="br-nav">` in `index.html`.
+
+### Sanity-check an edit before pushing
+
+There is no build step to catch a syntax error, and a broken `CONTENT` object means a **blank page in production**. Before committing a content change, extract the object and let Node parse it:
+
+```bash
+END=$(grep -n "^window.CONTENT = CONTENT;" index.html | cut -d: -f1)
+sed -n "1257,${END}p" index.html > /tmp/content.js
+node -e "global.window={}; require('/tmp/content.js'); console.log(window.CONTENT.publications.length)"
+```
+
+(Adjust `1257` to whatever line `const CONTENT = {` is on.) If it prints a number, the object is valid. Silence plus a `SyntaxError` means do not push.
 
 ---
 
@@ -152,6 +174,7 @@ Find `<nav className="br-nav">` (around line ~1375 in `index.html`).
 - **In-browser Babel is heavy.** Every visitor downloads React's *development* builds plus the full Babel compiler (~3MB) and transpiles JSX on their device. Acceptable for a personal site, but the obvious optimisation is to introduce a build step (Vite) and serve pre-compiled, minified production React.
 - **React DEV build, not production.** See above. No `react.production.min.js` is referenced.
 - **Hard dependency on `unpkg.com`.** If unpkg is unavailable, the site won't render. Mitigation would be self-hosting React/Babel.
+- **The unpkg script tags are pinned and SRI-protected.** React 18.3.1 and Babel 7.29.0, each with an `integrity="sha384-..."` hash. Bumping a version number **without regenerating the matching hash** makes the browser refuse the script and the site goes blank. Either regenerate the hash or drop the `integrity` attribute deliberately.
 - **Page title is intentionally `jovandhillon.com`** (not the engineer's name). Set by request.
 - **Em dashes have been swept from the file.** A zero-em-dash policy is in effect; if writing new copy, use colons / commas / parentheses instead of `—`.
 - **The `Tweaks` panel inside `index.html`** (search for `function Tweaks`) is editor-harness code that `postMessage`s to a parent window. It only activates inside a visual editor iframe. Harmless in production.
