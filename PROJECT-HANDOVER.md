@@ -50,13 +50,13 @@ The `CNAME` file in the repo (`jovandhillon.com`) is a legacy GitHub Pages artif
 
 ```
 .
-├── index.html              ← the entire site (~100KB)
+├── index.html              ← the entire site (~104KB, ~2400 lines)
 ├── images/                 ← favicons
 │   ├── favicon.ico         ← multi-size (16/32/48), classic tab icon
 │   ├── favicon.png         ← 512×512, modern browsers
 │   └── apple-touch-icon.png← 180×180, iOS home screen
 ├── sitemap.xml             ← single URL, submitted to Search Console
-├── robots.txt              ← AI-crawler rules + Sitemap line
+├── robots.txt              ← Sitemap line only (crawler rules come from Cloudflare)
 ├── CNAME                   ← legacy GitHub Pages marker (harmless)
 ├── README.md               ← GitHub profile readme (not used by the site)
 ├── LICENSE
@@ -72,6 +72,8 @@ The `CNAME` file in the repo (`jovandhillon.com`) is a legacy GitHub Pages artif
 - React 18 + ReactDOM are loaded as UMD scripts from **unpkg.com**.
 - JSX is compiled at runtime by **`@babel/standalone`** (also from unpkg).
 - All component code lives in `<script type="text/babel">` blocks inside `index.html`.
+
+Not everything is React. Three plain `<script>` blocks run outside the transpile: the `CONTENT` data object, the Google Analytics tag, and the cookie banner. The last two are deliberately independent of React (see section 9) and must stay that way.
 
 ### Five design variations, only one renders
 
@@ -95,9 +97,9 @@ Only `Brutalist` is shipped. The other four (and the `Tweaks` editor panel) are 
 
 ### Where the content lives
 
-Most page text comes from a shared `CONTENT` object (search for `const CONTENT = {`, currently around line 1257). The Brutalist component then reads from `C.quickFacts`, `C.services`, `C.stack`, `C.projects`, `C.publications`, `C.now`, etc.
+Most page text comes from a shared `CONTENT` object (search for `const CONTENT = {`). The Brutalist component then reads from `C.quickFacts`, `C.services`, `C.stack`, `C.projects`, `C.publications`, `C.now`, etc.
 
-Line numbers in this document drift every time content is added. Always search for the string, not the line.
+This document gives no line numbers on purpose. They drift every time anything is added, and stale ones are worse than none. Search for the string.
 
 Some text (hero copy, About paragraphs) is **hardcoded directly in the Brutalist JSX**, not in `CONTENT`. If editing copy, search for the exact phrase to find it.
 
@@ -175,7 +177,7 @@ If it prints a number, the object is valid. A `SyntaxError` means do not push.
 ## 7. Things to know / known quirks
 
 - **Google Analytics 4 is installed, gated behind consent.** The `gtag.js` snippet sits near the top of `<head>` in `index.html` (search for `gtag/js`), reporting to property **`G-7WM9PC1BBQ`**. It is a plain `<script>`, not a `text/babel` block, so it runs before React and is unaffected by the JSX transpile. See section 9 for the consent wiring.
-- **`robots.txt` is assembled at the edge, not just served from the repo.** Cloudflare **prepends** its managed block (Content Signals plus `Disallow` rules for ten AI crawlers) to the repo file rather than being replaced by it. The repo file therefore holds only the `Sitemap:` line. Do not paste the crawler rules into it: they arrive automatically and stay current, and duplicating them yields two identical groups in the served file.
+- **`robots.txt` is assembled at the edge, not just served from the repo.** Cloudflare **prepends** its managed block (Content Signals plus `Disallow` rules for ten AI crawlers) to the repo file rather than being replaced by it. The repo file therefore holds only the `Sitemap:` line. Do not paste the crawler rules into it: they arrive automatically and stay current, and duplicating them yields two identical groups in the served file. See section 10.
 - **In-browser Babel is heavy.** Every visitor downloads React's *development* builds plus the full Babel compiler (~3MB) and transpiles JSX on their device. Acceptable for a personal site, but the obvious optimisation is to introduce a build step (Vite) and serve pre-compiled, minified production React.
 - **React DEV build, not production.** See above. No `react.production.min.js` is referenced.
 - **Hard dependency on `unpkg.com`.** If unpkg is unavailable, the site won't render. Mitigation would be self-hosting React/Babel.
@@ -190,7 +192,14 @@ If it prints a number, the object is valid. A `SyntaxError` means do not push.
 
 - **Site shows nothing / blank page** → open DevTools → Console. Likely a JS syntax error in `index.html`, or unpkg.com is unreachable.
 - **DNS_PROBE_FINISHED_NXDOMAIN locally but works elsewhere** → local DNS cache. Flush (`ipconfig /flushdns` Windows, `sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder` Mac) or test on mobile data.
-- **Deploy didn't update the site** → check Cloudflare → Pages → project → **Deployments** tab; confirm the latest commit shows **Success**.
+- **Deploy didn't update the site** → check Cloudflare → Pages → project → **Deployments** tab; confirm the latest commit shows **Success**. To confirm from the terminal instead, grep the live page for something only the new version contains:
+
+  ```bash
+  curl -s https://jovandhillon.com/ | grep -c "some new string"
+  ```
+
+  A deploy usually lands within ~30 seconds of the push, but give it a minute before assuming it failed.
+- **A URL returns 200 but the wrong content** → Cloudflare Pages serves `index.html` for any unknown path, so a missing file looks like a success. Check the body and the `content-type`, never the status code alone.
 - **Favicon didn't update** → browser cache. Visit `/images/favicon.png` directly to confirm the new file is being served, then hard-refresh.
 - **No data in Google Analytics** → check the cookie banner. Analytics only fires after a visitor clicks **Accept**; a `Reject` or an untouched banner means no hits by design. In DevTools, `localStorage.getItem('jd-cookie-consent')` shows the stored choice.
 
@@ -217,6 +226,10 @@ localStorage.removeItem('jd-cookie-consent')
 ```
 
 Then reload; the banner returns.
+
+---
+
+## 10. Search engines: sitemap and robots.txt
 
 ### Sitemap
 
