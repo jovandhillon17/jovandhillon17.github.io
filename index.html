@@ -11,6 +11,20 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+
+  // Consent Mode v2. Analytics stays denied until the visitor opts in via the
+  // cookie banner (see the #cookie-banner block at the end of <body>), so no
+  // analytics cookie is written on a first visit. A previous choice is
+  // restored from localStorage here, before config, so it applies immediately.
+  var jdConsent = null;
+  try { jdConsent = localStorage.getItem('jd-cookie-consent'); } catch (e) {}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: jdConsent === 'granted' ? 'granted' : 'denied',
+  });
+
   gtag('js', new Date());
 
   gtag('config', 'G-7WM9PC1BBQ');
@@ -1252,6 +1266,48 @@ margin-right:8px;
 .tweaks-opt .sub { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #666; }
 .tweaks-opt.active .sub { color: #ffe500; }
 
+/* ═══════════════════════════════════════════════════════════
+   COOKIE BANNER
+   Sits outside the React tree, so it cannot read the
+   .v-brutalist custom properties. Colours are the brutalist
+   dark palette written out literally.
+═══════════════════════════════════════════════════════════ */
+
+.cb {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 9999;
+  background: #050505; color: #f5f5f7;
+  border-top: 3px solid #1f1f22;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+}
+.cb[hidden] { display: none; }
+.cb__inner {
+  max-width: 1200px; margin: 0 auto; padding: 18px 24px;
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+}
+.cb__text { flex: 1 1 320px; }
+.cb__tag {
+  display: inline-block; margin-bottom: 6px;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: #ff3b30; font-weight: 600;
+}
+.cb__text p { font-size: 0.875rem; line-height: 1.5; font-weight: 500; }
+.cb__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.cb__btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 12px 20px; font-weight: 700; font-size: 0.875rem;
+  border: 3px solid #1f1f22; background: #050505; color: #f5f5f7;
+  box-shadow: 4px 4px 0 #1f1f22; transition: all 120ms ease;
+}
+.cb__btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #1f1f22; }
+.cb__btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #1f1f22; }
+.cb__btn--accept { background: #ff3b30; border-color: #ff3b30; color: #fff; }
+
+@media (max-width: 640px) {
+  .cb__inner { padding: 16px; gap: 14px; }
+  .cb__actions { width: 100%; }
+  .cb__btn { flex: 1; }
+}
 </style>
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
@@ -1260,6 +1316,50 @@ margin-right:8px;
 </head>
 <body>
 <div id="root"></div>
+
+<!-- Cookie consent banner. Deliberately vanilla JS, not a React component: it
+     gates Google Analytics, which loads in <head> long before React does, and
+     it should still work if the React tree fails to render. -->
+<div id="cookie-banner" class="cb" role="region" aria-label="Cookie consent" hidden>
+  <div class="cb__inner">
+    <div class="cb__text">
+      <span class="cb__tag">Cookies</span>
+      <p>This site uses Google Analytics to count visits. Nothing is stored on your device until you choose.</p>
+    </div>
+    <div class="cb__actions">
+      <button type="button" class="cb__btn" data-consent="denied">Reject</button>
+      <button type="button" class="cb__btn cb__btn--accept" data-consent="granted">Accept</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var KEY = 'jd-cookie-consent';
+  var banner = document.getElementById('cookie-banner');
+  if (!banner) return;
+
+  function read() {
+    try { return localStorage.getItem(KEY); } catch (e) { return null; }
+  }
+
+  // No stored choice yet, so ask. A blocked localStorage reads as null, which
+  // means the banner shows every visit rather than silently assuming consent.
+  if (!read()) banner.hidden = false;
+
+  banner.addEventListener('click', function (event) {
+    var button = event.target.closest('[data-consent]');
+    if (!button) return;
+
+    var choice = button.getAttribute('data-consent');
+    try { localStorage.setItem(KEY, choice); } catch (e) {}
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', { analytics_storage: choice });
+    }
+    banner.hidden = true;
+  });
+})();
+</script>
 
 <script>
 // jovandhillon.com: shared content data

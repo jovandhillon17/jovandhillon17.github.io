@@ -2,7 +2,7 @@
 
 A practical operator's guide for picking this project up cold.
 
-*Last updated: July 2026.*
+*Last updated: September 2026.*
 
 ---
 
@@ -55,6 +55,7 @@ The `CNAME` file in the repo (`jovandhillon.com`) is a legacy GitHub Pages artif
 │   ├── favicon.ico         ← multi-size (16/32/48), classic tab icon
 │   ├── favicon.png         ← 512×512, modern browsers
 │   └── apple-touch-icon.png← 180×180, iOS home screen
+├── sitemap.xml             ← single URL, submitted to Search Console
 ├── CNAME                   ← legacy GitHub Pages marker (harmless)
 ├── README.md               ← GitHub profile readme (not used by the site)
 ├── LICENSE
@@ -172,7 +173,8 @@ If it prints a number, the object is valid. A `SyntaxError` means do not push.
 
 ## 7. Things to know / known quirks
 
-- **Google Analytics 4 is installed.** The `gtag.js` snippet sits near the top of `<head>` in `index.html` (search for `gtag/js`), reporting to property **`G-7WM9PC1BBQ`**. It is a plain `<script>`, not a `text/babel` block, so it runs before React and is unaffected by the JSX transpile. Note there is **no cookie or consent banner**, so GA sets its cookies on first load for every visitor; if the site ever needs UK/EU PECR-GDPR consent, this is the thing to gate.
+- **Google Analytics 4 is installed, gated behind consent.** The `gtag.js` snippet sits near the top of `<head>` in `index.html` (search for `gtag/js`), reporting to property **`G-7WM9PC1BBQ`**. It is a plain `<script>`, not a `text/babel` block, so it runs before React and is unaffected by the JSX transpile. See section 9 for the consent wiring.
+- **`robots.txt` is served by Cloudflare, not this repo.** It is a managed file (~2370 lines) carrying Content Signals (`search=yes, ai-train=no, use=reference`) and `Disallow` rules for a long list of AI crawlers. **Adding a `robots.txt` to the repo would override all of it.** If you ever need custom rules, prefer Cloudflare's dashboard setting, or accept that you are taking over the whole file including the AI-crawler blocks.
 - **In-browser Babel is heavy.** Every visitor downloads React's *development* builds plus the full Babel compiler (~3MB) and transpiles JSX on their device. Acceptable for a personal site, but the obvious optimisation is to introduce a build step (Vite) and serve pre-compiled, minified production React.
 - **React DEV build, not production.** See above. No `react.production.min.js` is referenced.
 - **Hard dependency on `unpkg.com`.** If unpkg is unavailable, the site won't render. Mitigation would be self-hosting React/Babel.
@@ -189,3 +191,36 @@ If it prints a number, the object is valid. A `SyntaxError` means do not push.
 - **DNS_PROBE_FINISHED_NXDOMAIN locally but works elsewhere** → local DNS cache. Flush (`ipconfig /flushdns` Windows, `sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder` Mac) or test on mobile data.
 - **Deploy didn't update the site** → check Cloudflare → Pages → project → **Deployments** tab; confirm the latest commit shows **Success**.
 - **Favicon didn't update** → browser cache. Visit `/images/favicon.png` directly to confirm the new file is being served, then hard-refresh.
+- **No data in Google Analytics** → check the cookie banner. Analytics only fires after a visitor clicks **Accept**; a `Reject` or an untouched banner means no hits by design. In DevTools, `localStorage.getItem('jd-cookie-consent')` shows the stored choice.
+
+---
+
+## 9. Analytics and cookie consent
+
+**GA4 property:** `G-7WM9PC1BBQ`. The tag is in `<head>` in `index.html` (search for `gtag/js`).
+
+Analytics is wired through **Google Consent Mode v2** and is **denied by default**:
+
+1. Before `gtag('config', ...)` runs, a `gtag('consent', 'default', ...)` call sets `analytics_storage` to `denied`, unless a previous choice is found in `localStorage` under the key **`jd-cookie-consent`**.
+2. The banner markup, styles (`.cb*`), and logic live in `index.html`. Search for `cookie-banner`.
+3. Clicking **Accept** or **Reject** stores the choice and fires `gtag('consent', 'update', ...)`. The banner does not reappear.
+
+The banner is **deliberately vanilla JS, not a React component.** It gates a script that loads in `<head>` long before React, and it should keep working if the React tree fails to render. Do not port it into a variation component.
+
+Its CSS cannot use the `--border` / `--accent` custom properties, because those are scoped to `.v-brutalist` inside the React tree. The brutalist dark palette is written out literally in the `.cb*` rules. It does **not** follow the site's light-mode toggle.
+
+### To reset consent while testing
+
+```js
+localStorage.removeItem('jd-cookie-consent')
+```
+
+Then reload; the banner returns.
+
+### Sitemap
+
+`sitemap.xml` sits at the repo root and is served at **https://jovandhillon.com/sitemap.xml** for Google Search Console.
+
+It is a single-URL sitemap because the site is one page. The section anchors (`#about`, `#projects`, ...) are deliberately **not** listed: search engines ignore fragment URLs in sitemaps. Update `<lastmod>` when you make a meaningful content change.
+
+Note that before this file existed, `/sitemap.xml` returned `index.html` with a `200`, because Cloudflare Pages falls back to the index for unknown paths. A missing file will not 404 here, so verify content, not status codes.
