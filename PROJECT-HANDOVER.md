@@ -56,6 +56,7 @@ The `CNAME` file in the repo (`jovandhillon.com`) is a legacy GitHub Pages artif
 │   ├── favicon.png         ← 512×512, modern browsers
 │   └── apple-touch-icon.png← 180×180, iOS home screen
 ├── sitemap.xml             ← single URL, submitted to Search Console
+├── robots.txt              ← AI-crawler rules + Sitemap line
 ├── CNAME                   ← legacy GitHub Pages marker (harmless)
 ├── README.md               ← GitHub profile readme (not used by the site)
 ├── LICENSE
@@ -174,7 +175,7 @@ If it prints a number, the object is valid. A `SyntaxError` means do not push.
 ## 7. Things to know / known quirks
 
 - **Google Analytics 4 is installed, gated behind consent.** The `gtag.js` snippet sits near the top of `<head>` in `index.html` (search for `gtag/js`), reporting to property **`G-7WM9PC1BBQ`**. It is a plain `<script>`, not a `text/babel` block, so it runs before React and is unaffected by the JSX transpile. See section 9 for the consent wiring.
-- **`robots.txt` is served by Cloudflare, not this repo.** It is a managed file (~2370 lines) carrying Content Signals (`search=yes, ai-train=no, use=reference`) and `Disallow` rules for a long list of AI crawlers. **Adding a `robots.txt` to the repo would override all of it.** If you ever need custom rules, prefer Cloudflare's dashboard setting, or accept that you are taking over the whole file including the AI-crawler blocks.
+- **`robots.txt` is now a repo file, mirrored from Cloudflare's managed one.** It carries the Content Signals block (`search=yes, ai-train=no, use=reference`), `Disallow` rules for ten AI crawlers, and the `Sitemap:` line. **It is a frozen snapshot**: Cloudflare keeps its managed list current, this file does not, so re-check it against Cloudflare's managed robots.txt docs every so often and add newly listed crawlers by hand.
 - **In-browser Babel is heavy.** Every visitor downloads React's *development* builds plus the full Babel compiler (~3MB) and transpiles JSX on their device. Acceptable for a personal site, but the obvious optimisation is to introduce a build step (Vite) and serve pre-compiled, minified production React.
 - **React DEV build, not production.** See above. No `react.production.min.js` is referenced.
 - **Hard dependency on `unpkg.com`.** If unpkg is unavailable, the site won't render. Mitigation would be self-hosting React/Babel.
@@ -224,3 +225,19 @@ Then reload; the banner returns.
 It is a single-URL sitemap because the site is one page. The section anchors (`#about`, `#projects`, ...) are deliberately **not** listed: search engines ignore fragment URLs in sitemaps. Update `<lastmod>` when you make a meaningful content change.
 
 Note that before this file existed, `/sitemap.xml` returned `index.html` with a `200`, because Cloudflare Pages falls back to the index for unknown paths. A missing file will not 404 here, so verify content, not status codes.
+
+**If Search Console reports "Sitemap is HTML"**, it is showing a read from before the sitemap deployed. Confirm the live file first:
+
+```bash
+curl -sI https://jovandhillon.com/sitemap.xml | grep -i content-type   # want application/xml
+```
+
+If that is `application/xml`, the error is stale. Press **Refresh** on the sitemap row in Search Console to force a re-read.
+
+### robots.txt
+
+Lives at the repo root and carries the AI-crawler rules plus the `Sitemap:` line.
+
+It is a **mirror of Cloudflare's managed robots.txt**, taken September 2026, because a repo file overrides the managed one and the rules would otherwise be lost. **It does not update itself.** Cloudflare adds crawlers to its managed list over time; this file will drift. Compare it against Cloudflare's live list periodically and add new entries by hand.
+
+Before this file existed, `/robots.txt` served Cloudflare's managed block **followed by the whole of `index.html`**, because the Pages fallback returned the index and Cloudflare prepended its managed content to it. Crawlers skipped the unparseable HTML, so it worked, but the file was malformed.
