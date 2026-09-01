@@ -160,17 +160,19 @@ Find `<nav className="br-nav">` in `index.html`.
 There is no build step to catch a syntax error, and a broken `CONTENT` object means a **blank page in production**. Before committing a content change, extract the object and let Node parse it:
 
 ```bash
+START=$(grep -n "^const CONTENT = {" index.html | cut -d: -f1)
 END=$(grep -n "^window.CONTENT = CONTENT;" index.html | cut -d: -f1)
-sed -n "1257,${END}p" index.html > /tmp/content.js
+sed -n "${START},${END}p" index.html > /tmp/content.js
 node -e "global.window={}; require('/tmp/content.js'); console.log(window.CONTENT.publications.length)"
 ```
 
-(Adjust `1257` to whatever line `const CONTENT = {` is on.) If it prints a number, the object is valid. Silence plus a `SyntaxError` means do not push.
+If it prints a number, the object is valid. A `SyntaxError` means do not push.
 
 ---
 
 ## 7. Things to know / known quirks
 
+- **Google Analytics 4 is installed.** The `gtag.js` snippet sits near the top of `<head>` in `index.html` (search for `gtag/js`), reporting to property **`G-7WM9PC1BBQ`**. It is a plain `<script>`, not a `text/babel` block, so it runs before React and is unaffected by the JSX transpile. Note there is **no cookie or consent banner**, so GA sets its cookies on first load for every visitor; if the site ever needs UK/EU PECR-GDPR consent, this is the thing to gate.
 - **In-browser Babel is heavy.** Every visitor downloads React's *development* builds plus the full Babel compiler (~3MB) and transpiles JSX on their device. Acceptable for a personal site, but the obvious optimisation is to introduce a build step (Vite) and serve pre-compiled, minified production React.
 - **React DEV build, not production.** See above. No `react.production.min.js` is referenced.
 - **Hard dependency on `unpkg.com`.** If unpkg is unavailable, the site won't render. Mitigation would be self-hosting React/Babel.
